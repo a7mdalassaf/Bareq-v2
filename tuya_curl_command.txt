@@ -1,0 +1,7 @@
+
+curl -X GET "https://openapi.tuyaeu.com/v1.0/token?grant_type=1" \
+  -H "client_id: jg5ku4p9hmmew7w5yrhk" \
+  -H "sign: 53A4C58641E60D37E50288362804D0830CC5BC9522BA3CF1E9C1E6163D742979" \
+  -H "t: 1742238723712" \
+  -H "sign_method: HMAC-SHA256" \
+  -H "nonce: daaf001d-28e0-475c-8513-f603a19d343a"

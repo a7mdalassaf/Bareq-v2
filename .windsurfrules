@@ -1,0 +1,8 @@
+Code Quality: Maintain clean, modular code using SOLID and DRY principles.
+Error Handling: Implement robust exception handling with clear, informative logs.
+Documentation: Keep the README up to date with concise project summaries and setup instructions.
+Preview and Validation: Generate previews and validate features before finalizing.
+API Management: Route all API requests through the web server for security and efficiency.
+Visualization Maintenance: Update Mermaid diagrams with every code change.
+Decision Support: Generate three execution approaches for new tasks and select the best.
+when fixing a problem, always check the root cause and chain of thought and then fix it, don't just fix the symptoms then track it in the progress tracker file 

@@ -1,0 +1,168 @@
+{% extends "base.html" %}
+
+{% block title %}Locks{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2 class="mb-4">Smart Locks</h2>
+    
+    <div class="row">
+        {% for lock in locks %}
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h5 class="mb-0">{{ lock.name }}</h5>
+                    <span class="badge" id="status-badge-{{ lock.id }}">Checking...</span>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">
+                        <strong>Location:</strong> {{ lock.location }}<br>
+                        <strong>Type:</strong> {{ lock.lock_type }}<br>
+                        <strong>Battery:</strong> <span id="battery-{{ lock.id }}">-</span>%
+                    </p>
+                    <div class="btn-group">
+                        <button class="btn btn-primary btn-sm" onclick="checkLock({{ lock.id }})">
+                            <i class="fas fa-sync"></i> Check Status
+                        </button>
+                        <button class="btn btn-info btn-sm" onclick="showHistory({{ lock.id }})">
+                            <i class="fas fa-history"></i> History
+                        </button>
+                        <a href="{{ url_for('locks.list_guests', lock_id=lock.id) }}" class="btn btn-secondary btn-sm">
+                            <i class="fas fa-users"></i> Guests
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<!-- History Modal -->
+<div class="modal fade" id="historyModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Lock Status History</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <canvas id="historyChart"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+let historyChart = null;
+
+function updateStatusDisplay(lockId, data) {
+    const statusBadge = document.getElementById(`status-badge-${lockId}`);
+    const batterySpan = document.getElementById(`battery-${lockId}`);
+    
+    // Update status badge
+    statusBadge.className = 'badge';
+    if (data.error) {
+        statusBadge.classList.add('bg-danger');
+        statusBadge.textContent = 'Error';
+    } else {
+        statusBadge.classList.add(data.status === 'locked' ? 'bg-success' : 'bg-warning');
+        statusBadge.textContent = data.status.charAt(0).toUpperCase() + data.status.slice(1);
+    }
+    
+    // Update battery level
+    if (data.battery_level !== undefined) {
+        batterySpan.textContent = data.battery_level;
+        if (data.battery_level < 20) {
+            batterySpan.classList.add('text-danger');
+        } else {
+            batterySpan.classList.remove('text-danger');
+        }
+    }
+}
+
+function checkLock(lockId) {
+    fetch(`/check_lock/${lockId}`)
+        .then(response => response.json())
+        .then(data => {
+            if (data.error) {
+                showError(data.error);
+                return;
+            }
+            updateStatusDisplay(lockId, data);
+        })
+        .catch(error => showError('Failed to fetch lock status'));
+}
+
+function showHistory(lockId) {
+    fetch(`/lock/${lockId}/history`)
+        .then(response => response.json())
+        .then(data => {
+            displayHistoryChart(data);
+            new bootstrap.Modal(document.getElementById('historyModal')).show();
+        })
+        .catch(error => showError('Failed to fetch lock history'));
+}
+
+function displayHistoryChart(data) {
+    const ctx = document.getElementById('historyChart').getContext('2d');
+    
+    // Destroy existing chart if it exists
+    if (historyChart) {
+        historyChart.destroy();
+    }
+    
+    // Prepare data for chart
+    const timestamps = data.map(h => new Date(h.last_updated));
+    const statuses = data.map(h => h.status);
+    const batteryLevels = data.map(h => h.battery_level);
+    
+    historyChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: timestamps,
+            datasets: [
+                {
+                    label: 'Status',
+                    data: statuses.map(s => s === 'locked' ? 1 : 0),
+                    borderColor: 'rgb(75, 192, 192)',
+                    tension: 0.1
+                },
+                {
+                    label: 'Battery Level',
+                    data: batteryLevels,
+                    borderColor: 'rgb(255, 99, 132)',
+                    tension: 0.1
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    max: 100
+                }
+            }
+        }
+    });
+}
+
+function showError(message) {
+    // You can implement this based on your UI needs
+    alert(message);
+}
+
+// Check all locks on page load
+document.addEventListener('DOMContentLoaded', function() {
+    const locks = document.querySelectorAll('.card');
+    locks.forEach(lock => {
+        const lockId = lock.querySelector('.badge').id.split('-')[2];
+        checkLock(lockId);
+    });
+});
+</script>
+{% endblock %} 

@@ -1,0 +1,75 @@
+{% extends "admin/layout.html" %}
+
+{% block title %}Admin Dashboard - RettLock{% endblock %}
+
+{% block header %}Admin Dashboard{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-4 mb-4">
+        <div class="card h-100">
+            <div class="card-header">
+                <h5 class="mb-0">API Credentials</h5>
+            </div>
+            <div class="card-body">
+                <p>Manage API credentials for external services like Tuya and TTLock.</p>
+                <a href="{{ url_for('admin.list_credentials') }}" class="btn btn-primary">
+                    <i class="bi bi-key-fill me-2"></i>Manage Credentials
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-4 mb-4">
+        <div class="card h-100">
+            <div class="card-header">
+                <h5 class="mb-0">Database Management</h5>
+            </div>
+            <div class="card-body">
+                <p>View and manage database tables, records, and schema.</p>
+                <a href="{{ url_for('admin.database_management') }}" class="btn btn-primary">
+                    <i class="bi bi-database-fill me-2"></i>Manage Database
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-4 mb-4">
+        <div class="card h-100">
+            <div class="card-header">
+                <h5 class="mb-0">System Status</h5>
+            </div>
+            <div class="card-body">
+                <p>View and manage system status and configuration.</p>
+                <a href="/" class="btn btn-secondary">
+                    <i class="bi bi-gear-fill me-2"></i>System Settings
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">Quick Actions</h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-4 mb-3">
+                        <a href="{{ url_for('admin.new_credential') }}" class="btn btn-outline-primary w-100">
+                            <i class="bi bi-plus-circle me-2"></i>Add New Credential
+                        </a>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <a href="{{ url_for('admin.database_management') }}" class="btn btn-outline-primary w-100">
+                            <i class="bi bi-table me-2"></i>View Database Tables
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,319 @@
+------property status
+
+Based on the device ID, query the property status reported by the device to the cloud.
+
+URL
+GET EU/v2.0/cloud/thing/{device_id}/shadow/properties
+Request Parameter
+Name	Type	IN	Required	Description
+device_id	String	uri	Yes	
+The device ID.
+codes	String	query	No	
+The list of property codes, separated with commas (,).
+Sample Request
+Copy
+GET /v2.0/cloud/thing/372817193*****/shadow/properties
+Return Parameter
+Name	Type	Description
+result	ResultObject	
+The returned result.
+ResultObject
+Name	Type	Description
+properties	List<ResultObject#PropertiesItem>	
+The list of properties.
+ResultObject#PropertiesItem
+Name	Type	Description
+code	String	
+The code of the specified property.
+time	Long	
+The timestamp when the property value was updated.
+value	Object	
+The value of the specified property.
+custom_name	String	
+The custom name.
+dp_id	Integer	
+The ID of the specified property.
+Sample Response
+Copy
+{
+  "result": {
+    "properties": [
+      {
+        "code": "switch_led",
+        "custom_name": "cole_red",
+        "dp_id": 20,
+        "time": 1669797124390,
+        "value": true
+      }
+    ]
+  },
+  "success": true,
+  "t": 1675393820827
+}
+
+
+
+----modify the property status
+
+Based on the device ID, modify the property status reported by the device to the cloud. Currently, you can only modify the custom name of a property.
+
+URL
+POST EU/v2.0/cloud/thing/{device_id}/shadow/properties
+Request Parameter
+Name	Type	IN	Required	Description
+device_id	String	uri	Yes	
+The device ID.
+Body Parameter
+Name	Type	Required	Description
+properties	List<PropertiesItem>	Yes	
+The list of the device property objects.
+PropertiesItem
+Name	Type	Required	Description
+code	String	Yes	
+The code of the specified property.
+custom_name	String	Yes	
+The custom name of the specified property.
+Sample Request
+Copy
+POST /v2.0/cloud/thing/372817193*****/shadow/properties
+Copy
+{
+  "properties": [
+    {
+      "code": "switch_led",
+      "custom_name": "switch_led1"
+    }
+  ]
+}
+Return Parameter
+Name	Type	Description
+result	Boolean	
+The returned result. Valid values:
+`true`: The operation succeeded.
+`false`: The operation failed.
+Sample Response
+Copy
+{
+  "result": true,
+  "t": 1591872112140,
+  "success": true
+}
+
+
+--------------Send Property
+
+Based on the device ID, immediately send a property setting command to the specified device. When the device is offline, the sending process will fail.
+
+URL
+POST EU/v2.0/cloud/thing/{device_id}/shadow/properties/issue
+Request Parameter
+Name	Type	IN	Required	Description
+device_id	String	uri	Yes	
+The device ID.
+Body Parameter
+Name	Type	Required	Description
+properties	String	Yes	
+The property to be supported by the device. In JSON parsable data, the key is the property code, and the value is the property value that is sent.
+Sample Request
+Copy
+POST /v2.0/cloud/thing/372817193*****/shadow/properties/issue
+Copy
+{
+  "properties": "{\"switch_1\":true}"
+}
+Return Parameter
+Name	Type	Description
+result	JSON	
+The returned result. Currently, no result is sent.
+success
+Name	Type	Description
+success	Boolean	
+Indicates whether the operation is successful. Valid values:
+`true`: The operation succeeded.
+`false`: The operation failed.
+t
+Name	Type	Description
+t	Long	
+The timestamp.
+tid
+Name	Type	Description
+tid	String	
+The link ID.
+Sample Response
+Copy
+
+
+
+
+--------Get the specifications and properties of the device
+
+
+Get the specifications and properties of the device by the device ID, including the instruction set and status set.
+
+URL
+GET EU/v1.0/iot-03/devices/{device_id}/specification
+Request Parameter
+Name	Type	IN	Required	Description
+device_id	String	uri	Yes	
+Device ID
+Sample Request
+Copy
+GET /v1.0/iot-03/devices/xxxid/specification
+Return Parameter
+Name	Type	Description
+result	ResultObject	
+ResultObject
+Name	Type	Description
+category	String	
+Product category
+functions	List<ResultObject#FunctionsItem>	
+Instruction set
+status	List<ResultObject#StatusItem>	
+Status set
+ResultObject#FunctionsItem
+Name	Type	Description
+name	String	
+Instruction name
+desc	String	
+Description
+code	String	
+Instruction
+type	String	
+Instruction type
+values	String	
+The input parameter range of the instruction
+ResultObject#StatusItem
+Name	Type	Description
+code	String	
+Status code
+name	String	
+Status name
+type	String	
+Type
+values	String	
+The input parameter range
+Sample Response
+Copy
+{
+  "success": true,
+  "t": 1591872112140,
+  "result": {
+    "category": "dj",
+    "functions": [
+      {
+        "code": "switch",
+        "desc": "{}",
+        "name": "Switch",
+        "type": "Boolean",
+        "values": "{}"
+      }
+    ],
+    "status": [
+      {
+        "code": "switch_led",
+        "type": "Boolean",
+        "values": "{}",
+        "name": "switch"
+      }
+    ]
+  }
+}
+
+
+
+-----------Send commands
+
+
+Send commands to a device.
+
+URL
+POST EU/v1.0/iot-03/devices/{device_id}/commands
+Request Parameter
+Name	Type	IN	Required	Description
+device_id	String	uri	Yes	
+Device ID
+Body Parameter
+Name	Type	Required	Description
+commands	List<CommandsItem>	Yes	
+The command to control a device
+CommandsItem
+Name	Type	Required	Description
+code	String	Yes	
+Command code
+value	Object	Yes	
+Command value
+Sample Request
+Copy
+POST /v1.0/iot-03/devices/xxxid/commands
+Copy
+{
+  "commands": [
+    {
+      "code": "switch_led",
+      "value": true
+    }
+  ]
+}
+Return Parameter
+Name	Type	Description
+result	Boolean	
+Sample Response
+Copy
+{
+  "success": true,
+  "t": 1551851043862,
+  "result": true
+}
+
+
+
+---Get the latest status of multiple devices
+
+
+Get the latest status of multiple devices by the device IDs.
+
+URL
+GET EU/v1.0/iot-03/devices/status
+Request Parameter
+Name	Type	IN	Required	Description
+device_ids	String	query	Yes	
+The device IDs. Multiple IDs are separated by a comma (,). Limit up to 20.
+Sample Request
+Copy
+GET /v1.0/iot-03/devices/status?device_ids=xxxid1,xxxxid2
+Return Parameter
+Name	Type	Description
+result	List<ResultItem>	
+ResultItem
+Name	Type	Description
+id	String	
+Device ID
+status	List<ResultItem#StatusItem>	
+The list of device status
+ResultItem#StatusItem
+Name	Type	Description
+code	String	
+Status code
+value	Object	
+Status value
+Sample Response
+Copy
+{
+  "success": true,
+  "t": 1591872112140,
+  "result": [
+    {
+      "id": "xxxxxx",
+      "status": [
+        {
+          "code": "switch_led",
+          "value": true
+        },
+        {
+          "code": "work_mode",
+          "value": "scene_2"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block title %}Add TTLock Account{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1>Add TTLock Account</h1>
+    
+    {% if error %}
+        <div class="alert alert-danger">{{ error }}</div>
+    {% endif %}
+    
+    <div class="card">
+        <div class="card-body">
+            <form method="POST" action="{{ url_for('add_ttlock_account') }}">
+                <div class="form-group mb-3">
+                    <label for="account_id">Account ID</label>
+                    <input type="text" class="form-control" id="account_id" name="account_id" required 
+                           placeholder="Enter a unique identifier for this account (e.g., 'account1', 'personal', 'work')">
+                    <small class="form-text text-muted">This is a unique identifier used to distinguish between multiple accounts.</small>
+                </div>
+                
+                <div class="form-group mb-3">
+                    <label for="username">Username</label>
+                    <input type="text" class="form-control" id="username" name="username" required 
+                           placeholder="Enter your TTLock account username or email">
+                </div>
+                
+                <div class="form-group mb-3">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" id="password" name="password" required 
+                           placeholder="Enter your TTLock account password">
+                    <small class="form-text text-muted">Your password will be securely stored and encrypted in the database.</small>
+                </div>
+                
+                <button type="submit" class="btn btn-primary">Add Account</button>
+                <a href="{{ url_for('ttlock_accounts') }}" class="btn btn-secondary">Cancel</a>
+            </form>
+        </div>
+    </div>
+    
+    <div class="card mt-4">
+        <div class="card-header">
+            <h5>Important Notes</h5>
+        </div>
+        <div class="card-body">
+            <ul>
+                <li>You must use the same username and password that you use to log in to the TTLock app.</li>
+                <li>The Account ID is only used locally to identify this account in the system.</li>
+                <li>After adding the account, you can test the connection to verify it's working correctly.</li>
+                <li>All credentials are stored securely with encryption in the database.</li>
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,1688 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RettLock Info - Smart Lock Management</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-material-ui/material-ui.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #4361ee;
+            --secondary-color: #3f37c9;
+            --success-color: #4cc9f0;
+            --info-color: #4895ef;
+            --warning-color: #f72585;
+            --danger-color: #e63946;
+            --light-color: #f8f9fa;
+            --dark-color: #212529;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f7fb;
+            color: #333;
+        }
+        
+        .navbar {
+            background-color: var(--primary-color);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            color: white !important;
+        }
+        
+        .nav-link {
+            color: rgba(255,255,255,0.85) !important;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link:hover {
+            color: white !important;
+            transform: translateY(-2px);
+        }
+        
+        .card {
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            margin-bottom: 1.5rem;
+            overflow: hidden;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+        
+        .card-header {
+            background-color: white;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            padding: 1.25rem 1.5rem;
+            font-weight: 600;
+        }
+        
+        .card-body {
+            padding: 1.5rem;
+        }
+        
+        .btn {
+            border-radius: 10px;
+            padding: 0.6rem 1.5rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-size: 0.9rem;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--secondary-color);
+            border-color: var(--secondary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(67, 97, 238, 0.3);
+        }
+        
+        .btn-success {
+            background-color: var(--success-color);
+            border-color: var(--success-color);
+        }
+        
+        .btn-success:hover {
+            background-color: #3db8df;
+            border-color: #3db8df;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(76, 201, 240, 0.3);
+        }
+        
+        .btn-danger {
+            background-color: var(--danger-color);
+            border-color: var(--danger-color);
+        }
+        
+        .btn-danger:hover {
+            background-color: #d62b39;
+            border-color: #d62b39;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(230, 57, 70, 0.3);
+        }
+        
+        .guest-card {
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        
+        .guest-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+        
+        .led-indicator {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+        
+        .led-on {
+            display: inline-flex;
+            align-items: center;
+            color: #ffffff;
+            background-color: #4cc9f0;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-weight: 600;
+            box-shadow: 0 0 10px rgba(76, 201, 240, 0.4);
+        }
+        
+        .led-on::before {
+            content: "";
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            background-color: #ffffff;
+            border-radius: 50%;
+            margin-right: 8px;
+            box-shadow: 0 0 8px rgba(255,255,255,0.8);
+        }
+        
+        .led-off {
+            display: inline-flex;
+            align-items: center;
+            color: #ffffff;
+            background-color: #e63946;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-weight: 600;
+            box-shadow: 0 0 10px rgba(230, 57, 70, 0.4);
+        }
+        
+        .led-off::before {
+            content: "";
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            background-color: #ffffff;
+            border-radius: 50%;
+            margin-right: 8px;
+            box-shadow: 0 0 8px rgba(255,255,255,0.8);
+        }
+        
+        .led-unknown, .led-error {
+            display: inline-flex;
+            align-items: center;
+            color: #ffffff;
+            background-color: #6c757d;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-weight: 600;
+        }
+        
+        .led-unknown::before, .led-error::before {
+            content: "";
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            background-color: #ffffff;
+            border-radius: 50%;
+            margin-right: 8px;
+            box-shadow: 0 0 8px rgba(255,255,255,0.8);
+        }
+        
+        .led-error {
+            background-color: #f72585;
+        }
+        
+        .status-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            padding: 8px 12px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .badge-active {
+            background-color: rgba(76, 201, 240, 0.2);
+            color: #4cc9f0;
+            border: 1px solid #4cc9f0;
+        }
+        
+        .badge-inactive {
+            background-color: rgba(108, 117, 125, 0.2);
+            color: #6c757d;
+            border: 1px solid #6c757d;
+        }
+        
+        .badge-expired {
+            background-color: rgba(230, 57, 70, 0.2);
+            color: #e63946;
+            border: 1px solid #e63946;
+        }
+        
+        .light-icon {
+            font-size: 1.2em;
+            margin-right: 8px;
+        }
+        
+        .light-on {
+            color: #4cc9f0;
+            text-shadow: 0 0 5px #4cc9f0;
+        }
+        
+        .light-off {
+            color: #6c757d;
+        }
+        
+        .section-title {
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--dark-color);
+            border-left: 5px solid var(--primary-color);
+            padding-left: 15px;
+        }
+        
+        .form-control, .form-select {
+            border-radius: 10px;
+            padding: 0.75rem 1rem;
+            border: 1px solid rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .form-control:focus, .form-select:focus {
+            box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
+            border-color: var(--primary-color);
+        }
+        
+        .form-label {
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            color: #495057;
+        }
+        
+        .dashboard-stats {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 8px 25px rgba(67, 97, 238, 0.3);
+        }
+        
+        .stats-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stats-label {
+            font-size: 1rem;
+            font-weight: 500;
+            opacity: 0.9;
+        }
+        
+        .stats-icon {
+            font-size: 3rem;
+            opacity: 0.2;
+            position: absolute;
+            top: 1rem;
+            right: 1.5rem;
+        }
+        
+        .footer {
+            background-color: white;
+            padding: 1.5rem 0;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(0,0,0,0.05);
+        }
+        
+        .admin-link {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .admin-link:hover {
+            color: var(--secondary-color);
+            text-decoration: underline;
+        }
+        
+        /* Responsive adjustments for mobile devices */
+        @media (max-width: 768px) {
+            .dashboard-stats {
+                margin-bottom: 1rem;
+            }
+            
+            .stats-value {
+                font-size: 2rem;
+            }
+            
+            .card {
+                margin-bottom: 1rem;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+            }
+            
+            .navbar-brand {
+                font-size: 1.2rem;
+            }
+            
+            .form-group {
+                margin-bottom: 0.75rem;
+            }
+        }
+        
+        /* Loading spinner */
+        .spinner-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+        }
+        
+        .spinner-border {
+            width: 3rem;
+            height: 3rem;
+            color: var(--primary-color);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark mb-4">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                <i class="fas fa-lock me-2"></i> RettLock Info
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">
+                            <i class="fas fa-home me-1"></i> Home
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin">
+                            <i class="fas fa-cog me-1"></i> Admin
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin/credentials">
+                            <i class="fas fa-key me-1"></i> Credentials
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/ttlock/accounts">
+                            <i class="fas fa-users-cog me-1"></i> TTLock Accounts
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container py-4">
+        <!-- Flash Messages -->
+        {% for category, message in get_flashed_messages(with_categories=true) %}
+        <div class="alert alert-{{ category }} alert-dismissible fade show mb-4" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% endfor %}
+        
+        <!-- Dashboard Stats -->
+        <div class="row mb-4">
+            <div class="col-md-4">
+                <div class="dashboard-stats position-relative">
+                    <i class="fas fa-users stats-icon"></i>
+                    <div class="stats-value">{{ guests|length }}</div>
+                    <div class="stats-label">Active Guests</div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="dashboard-stats position-relative">
+                    <i class="fas fa-key stats-icon"></i>
+                    <div class="stats-value" id="lockCount">-</div>
+                    <div class="stats-label">Smart Locks</div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="dashboard-stats position-relative">
+                    <i class="fas fa-lightbulb stats-icon"></i>
+                    <div class="stats-value">
+                        <span class="{{ 'light-on' if led_status else 'light-off' }}">
+                            <i class="fas fa-lightbulb"></i>
+                        </span>
+                    </div>
+                    <div class="stats-label">LED Status: {{ 'ON' if led_status else 'OFF' }}</div>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="section-title">Smart Lock Management</h2>
+<!-- Lock Status Section -->
+<div class="card mb-4">
+    <div class="card-header">
+        <h5 class="mb-0">
+            <i class="fas fa-lock me-2"></i>Lock Status
+        </h5>
+    </div>
+    <div class="card-body">
+        <form id="checkLockForm" class="mb-3" onsubmit="return false;">
+            <button type="submit" class="btn btn-primary" id="checkLockBtn">
+                <i class="fas fa-sync-alt me-2"></i>Check Lock Status
+            </button>
+        </form>
+        <div id="lockStatus" class="mt-3">
+            {% if system_status and system_status.lock_status %}
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Lock Name</th>
+                                <th>Lock ID</th>
+                                <th>Battery</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for lock in system_status.lock_status %}
+                            <tr>
+                                <td>{{ lock.name or 'Unnamed Lock' }}</td>
+                                <td><code>{{ lock.id }}</code></td>
+                                <td>
+                                    <div class="progress" style="height: 10px;">
+                                        <div class="progress-bar {{ 'bg-success' if lock.battery > 70 else ('bg-warning' if lock.battery > 30 else 'bg-danger') }}"
+                                            role="progressbar" 
+                                            style="width: {{ lock.battery }}%"
+                                            aria-valuenow="{{ lock.battery }}"
+                                            aria-valuemin="0"
+                                            aria-valuemax="100">
+                                        </div>
+                                    </div>
+                                    <small>{{ lock.battery }}%</small>
+                                </td>
+                                <td>
+                                    <span class="badge {{ 'bg-success' if lock.status == 'Online' else 'bg-secondary' }}">
+                                        {{ lock.status }}
+                                    </span>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <small class="text-muted">Last updated: {{ system_status.last_lock_check }}</small>
+            {% else %}
+                <div class="alert alert-info">
+                    <i class="fas fa-info-circle me-2"></i>No lock status information available. Click "Check Lock Status" to retrieve the latest data.
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$(document).ready(function() {
+    $('#checkLockForm').on('submit', function(e) {
+        e.preventDefault(); // Prevent default form submission
+        $.ajax({
+            url: '/check_lock',
+            type: 'POST',
+            data: {}, // Add any necessary data here
+            success: function(response) {
+                // Handle the response here
+                console.log(response);
+                // Update the UI with the response data
+                let statusHtml = '';
+                if (response.error) {
+                    statusHtml = `<div class="alert alert-danger"><i class="fas fa-exclamation-circle me-2"></i>${response.error}</div>`;
+                } else {
+                    const locks = response.lock_status;
+                    statusHtml = `
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Lock Name</th>
+                                        <th>Lock ID</th>
+                                        <th>Battery</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>`;
+                    
+                    locks.forEach(lock => {
+                        let batteryClass = 'bg-success';
+                        if (lock.battery < 30) {
+                            batteryClass = 'bg-danger';
+                        } else if (lock.battery < 70) {
+                            batteryClass = 'bg-warning';
+                        }
+                        
+                        statusHtml += `
+                            <tr>
+                                <td>${lock.name || 'Unnamed Lock'}</td>
+                                <td><code>${lock.id}</code></td>
+                                <td>
+                                    <div class="progress" style="height: 10px;">
+                                        <div class="progress-bar ${batteryClass}" 
+                                            role="progressbar" 
+                                            style="width: ${lock.battery}%" 
+                                            aria-valuenow="${lock.battery}" 
+                                            aria-valuemin="0" 
+                                            aria-valuemax="100">
+                                        </div>
+                                    </div>
+                                    <small>${lock.battery}%</small>
+                                </td>
+                                <td>
+                                    <span class="badge ${lock.status === 'Online' ? 'bg-success' : 'bg-secondary'}">
+                                        ${lock.status}
+                                    </span>
+                                </td>
+                            </tr>`;
+                    });
+                    
+                    statusHtml += `
+                                </tbody>
+                            </table>
+                        </div>
+                        <small class="text-muted">Last updated: ${new Date().toLocaleString()}</small>`;
+                }
+                
+                document.getElementById('lockStatus').innerHTML = statusHtml;
+                
+                // Update lock count in dashboard
+                if (response.lock_status) {
+                    document.getElementById('lockCount').textContent = response.lock_status.length;
+                }
+            },
+            error: function(error) {
+                console.error("Error:", error);
+                document.getElementById('lockStatus').innerHTML = `
+                    <div class="alert alert-danger">
+                        <i class="fas fa-exclamation-circle me-2"></i>Error checking lock status. Please try again later.
+                    </div>`;
+            }
+        });
+    });
+});
+</script>
+<!-- LED Control Section -->
+<div class="card mb-4">
+    <div class="card-header">
+        <h5 class="mb-0">
+            <i class="fas fa-lightbulb me-2"></i>LED Control
+        </h5>
+    </div>
+    <div class="card-body">
+        <div class="d-flex align-items-center mb-4">
+            <div class="me-4">
+                <span class="fs-5 me-2">Current Status:</span>
+                <span class="{{ 'led-on' if led_status else 'led-off' }}">
+                    {{ 'ON' if led_status else 'OFF' }}
+                </span>
+            </div>
+            <form id="toggleLedForm" class="ms-auto" onsubmit="return false;">
+                <button type="submit" class="btn {{ 'btn-danger' if led_status else 'btn-success' }}" id="toggleLedBtn">
+                    <i class="fas fa-lightbulb me-2"></i>{{ 'Turn LED OFF' if led_status else 'Turn LED ON' }}
+                </button>
+            </form>
+        </div>
+        <div class="alert alert-info">
+            <i class="fas fa-info-circle me-2"></i>The LED indicator shows when there are active guests with valid passcodes. It will automatically turn on when guests are active and turn off when no guests are active.
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$(document).ready(function() {
+    $('#toggleLedForm').on('submit', function(e) {
+        e.preventDefault(); // Prevent default form submission
+        $.ajax({
+            url: '/toggle_led',
+            type: 'POST',
+            data: {}, // Add any necessary data here
+            success: function(response) {
+                // Handle the response here
+                console.log(response);
+                // Optionally update the UI based on the response
+                // For example, you can refresh the LED status display
+            },
+            error: function(error) {
+                console.error("Error:", error);
+            }
+        });
+    });
+});
+</script>
+        <!-- Guest Management Section -->
+        <h2 class="section-title">Guest Management</h2>
+<!-- Guest List Section -->
+<div class="card mb-4">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <h5 class="mb-0">
+            <i class="fas fa-users me-2"></i>Guest List
+        </h5>
+        <form id="syncGuestsForm" class="ms-auto" onsubmit="return false;">
+            <button type="submit" class="btn btn-sm btn-primary">
+                <i class="fas fa-sync-alt me-2"></i>Sync Guests
+            </button>
+        </form>
+    </div>
+    <div class="card-body">
+        {% if guests %}
+        <div class="row" id="guestList">
+            {% for guest in guests %}
+            <div class="col-md-6 col-lg-4 mb-4">
+                <div class="card guest-card h-100">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0">{{ guest.name }}</h5>
+                        <span class="badge {{ 'badge-active' if guest.is_active else 'badge-inactive' }}">
+                            {% if guest.is_active %}Active{% else %}Inactive{% endif %}
+                        </span>
+                    </div>
+                    <div class="card-body">
+                        <p><strong>Lock ID:</strong> <code>{{ guest.lock_id }}</code></p>
+                        <p><strong>Passcode:</strong> <code>{{ guest.passcode }}</code></p>
+                        <p><strong>Start:</strong> {{ guest.start_date }}</p>
+                        <p><strong>End:</strong> {{ guest.end_date }}</p>
+                        <button type="button" class="btn btn-sm btn-danger w-100 delete-guest" data-guest-id="{{ guest.id }}">
+                            <i class="fas fa-trash-alt me-2"></i>Delete Guest
+                        </button>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <div class="alert alert-info">
+            <i class="fas fa-info-circle me-2"></i>No guests found. 
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$('.delete-guest').on('click', function() {
+    const guestId = $(this).data('guest-id');
+    if (confirm('Are you sure you want to delete this guest?')) {
+        $.ajax({
+            url: `/delete_guest/${guestId}`, // Ensure this URL matches your Flask route
+            type: 'POST', // Change to POST method
+            success: function(response) {
+                console.log('Guest deleted:', response);
+                // Remove the guest card from the UI
+                $(`#guest-${guestId}`).remove(); // Ensure you have an ID for the guest card
+            },
+            error: function(xhr, status, error) {
+                console.error("Error deleting guest:", xhr.responseText);
+                alert('Failed to delete guest. Please try again.');
+            }
+        });
+    }
+});
+</script>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$(document).ready(function() {
+    $('#syncGuestsForm').on('submit', function(e) {
+        e.preventDefault(); // Prevent default form submission
+        $.ajax({
+            url: '/sync_guests',
+            type: 'POST',
+            data: {}, // Add any necessary data here
+            success: function(response) {
+                // Handle the response here
+                console.log(response);
+                // Optionally refresh the guest list or show a success message
+            },
+            error: function(error) {
+                console.error("Error:", error);
+            }
+        });
+    });
+});
+</script>
+
+        <!-- Device Mapping Section -->
+        <h2 class="section-title">Device Management</h2>
+        
+        <div class="card mb-4">
+            <div class="card-header">
+                <h5 class="mb-0">
+                    <i class="fas fa-link me-2"></i>Current Device Mappings
+                </h5>
+            </div>
+            <div class="card-body">
+                <div id="deviceMappings">
+                    {% if device_mappings %}
+                        {% for mapping in device_mappings %}
+                            <div class="list-group-item" data-device-id="{{ mapping.device_id }}" data-lock-id="{{ mapping.lock_id }}" data-lock-name="{{ mapping.lock_name or 'Unnamed Lock' }}" data-device-name="{{ mapping.device_name or 'Unnamed Device' }}">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <h6 class="mb-1" data-field="lock-name">{{ mapping.lock_name or 'Unnamed Lock' }}</h6>
+                                        <small><strong>Lock ID:</strong> <code data-field="lock-id">{{ mapping.lock_id }}</code></small><br>
+                                        <small><strong>Device ID:</strong> <code data-field="device-id">{{ mapping.device_id }}</code></small><br>
+                                        <small><strong>Device Name:</strong> <span data-field="device-name">{{ mapping.device_name or 'Unnamed Device' }}</span></small>
+                                        <div class="mt-2">
+                                            <span class="status-btn btn btn-sm btn-warning" title="Loading status...">
+                                                <i class="fas fa-sync fa-spin me-1"></i>Loading
+                                            </span>
+                                            <button class="toggle-btn btn btn-sm btn-primary" disabled>
+                                                <i class="fas fa-power-off me-1"></i>TURN ON
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <button class="btn btn-sm btn-danger unlink-device" 
+                                                onclick="unlinkDevice('{{ mapping.lock_id }}')"
+                                                data-lock-id="{{ mapping.lock_id }}">
+                                            <i class="fas fa-unlink me-2"></i>UNLINK
+                                        </button>
+                                        <i class="fas fa-info-circle ms-2 text-muted api-info" 
+                                           style="cursor: help;" 
+                                           data-bs-toggle="tooltip" 
+                                           data-bs-html="true"
+                                           title="Loading..."></i>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        <div class="alert alert-info">
+                            <i class="fas fa-info-circle me-2"></i>No device mappings found.
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        <script>
+            // Function to update device status
+            function updateDeviceStatus(deviceId, statusBtn, toggleBtn, apiInfoIcon) {
+                statusBtn.innerHTML = '<i class="fas fa-sync fa-spin me-1"></i>Loading';
+                statusBtn.className = 'status-btn btn btn-sm btn-warning';
+                toggleBtn.disabled = true;
+                
+                fetch(`/device/${deviceId}/light/status`)
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            const isOn = data.status;
+                            statusBtn.className = `status-btn btn btn-sm ${isOn ? 'btn-success' : 'btn-secondary'}`;
+                            statusBtn.innerHTML = `<i class="fas fa-lightbulb me-1"></i>${isOn ? 'ON' : 'OFF'}`;
+                            toggleBtn.disabled = false;
+                            toggleBtn.innerHTML = `<i class="fas fa-power-off me-1"></i>TURN ${isOn ? 'OFF' : 'ON'}`;
+                            toggleBtn.className = `toggle-btn btn btn-sm ${isOn ? 'btn-danger' : 'btn-success'}`;
+                            
+                            // Update tooltip with API info
+                            if (apiInfoIcon) {
+                                const tooltipContent = `
+                                    <strong>Status:</strong> ${isOn ? 'ON' : 'OFF'}<br>
+                                    <strong>Last Updated:</strong> ${new Date().toLocaleTimeString()}<br>
+                                    <strong>Cached:</strong> ${data.cached ? 'Yes' : 'No'}<br>
+                                    <strong>Raw Response:</strong><br>
+                                    <code>${JSON.stringify(data.raw_response, null, 2)}</code>
+                                `;
+                                const tooltip = bootstrap.Tooltip.getInstance(apiInfoIcon);
+                                if (tooltip) {
+                                    tooltip.dispose();
+                                }
+                                apiInfoIcon.setAttribute('title', tooltipContent);
+                                new bootstrap.Tooltip(apiInfoIcon);
+                            }
+                        } else {
+                            statusBtn.className = 'status-btn btn btn-sm btn-danger';
+                            statusBtn.innerHTML = '<i class="fas fa-exclamation-triangle me-1"></i>ERROR';
+                            toggleBtn.disabled = true;
+                            
+                            // Update tooltip with error info
+                            if (apiInfoIcon) {
+                                const tooltipContent = `
+                                    <strong>Error:</strong> ${data.error}<br>
+                                    <strong>Time:</strong> ${new Date().toLocaleTimeString()}<br>
+                                    <strong>Raw Response:</strong><br>
+                                    <code>${JSON.stringify(data.raw_response || {}, null, 2)}</code>
+                                `;
+                                const tooltip = bootstrap.Tooltip.getInstance(apiInfoIcon);
+                                if (tooltip) {
+                                    tooltip.dispose();
+                                }
+                                apiInfoIcon.setAttribute('title', tooltipContent);
+                                new bootstrap.Tooltip(apiInfoIcon);
+                            }
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error fetching device status:', error);
+                        statusBtn.className = 'status-btn btn btn-sm btn-danger';
+                        statusBtn.innerHTML = '<i class="fas fa-exclamation-triangle me-1"></i>ERROR';
+                        toggleBtn.disabled = true;
+                        
+                        // Update tooltip with error info
+                        if (apiInfoIcon) {
+                            const tooltipContent = `
+                                <strong>Error:</strong> ${error.message}<br>
+                                <strong>Time:</strong> ${new Date().toLocaleTimeString()}<br>
+                                <strong>Type:</strong> Network/Server Error
+                            `;
+                            const tooltip = bootstrap.Tooltip.getInstance(apiInfoIcon);
+                            if (tooltip) {
+                                tooltip.dispose();
+                            }
+                            apiInfoIcon.setAttribute('title', tooltipContent);
+                            new bootstrap.Tooltip(apiInfoIcon);
+                        }
+                    });
+            }
+            
+            // Set up click handlers for each device
+            function initializeDeviceControls() {
+                document.querySelectorAll('[data-device-id]').forEach(deviceElement => {
+                    const deviceId = deviceElement.dataset.deviceId;
+                    const statusBtn = deviceElement.querySelector('.status-btn');
+                    const toggleBtn = deviceElement.querySelector('.toggle-btn');
+                    const apiInfoIcon = deviceElement.querySelector('.api-info');
+                    
+                    if (!statusBtn || !toggleBtn) return;
+                    
+                    // Update status initially
+                    updateDeviceStatus(deviceId, statusBtn, toggleBtn, apiInfoIcon);
+                    
+                    // Set up click handlers
+                    statusBtn.addEventListener('click', () => updateDeviceStatus(deviceId, statusBtn, toggleBtn, apiInfoIcon));
+                    
+                    toggleBtn.addEventListener('click', function() {
+                        const currentStatus = statusBtn.classList.contains('btn-success');
+                        toggleBtn.disabled = true;
+                        statusBtn.innerHTML = '<i class="fas fa-sync fa-spin me-1"></i>Loading';
+                        
+                        fetch(`/device/${deviceId}/light/toggle`, {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({
+                                state: !currentStatus
+                            })
+                        })
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.success) {
+                                updateDeviceStatus(deviceId, statusBtn, toggleBtn, apiInfoIcon);
+                                showToast(`Successfully turned ${!currentStatus ? 'ON' : 'OFF'} the light`, 'success');
+                            } else {
+                                statusBtn.className = 'status-btn btn btn-sm btn-danger';
+                                statusBtn.innerHTML = '<i class="fas fa-exclamation-triangle me-1"></i>ERROR';
+                                toggleBtn.disabled = false;
+                                showToast('Failed to toggle device: ' + (data.error || 'Unknown error'), 'error');
+                                
+                                // Update tooltip with error info
+                                if (apiInfoIcon) {
+                                    const tooltipContent = `
+                                        <strong>Error:</strong> ${data.error}<br>
+                                        <strong>Time:</strong> ${new Date().toLocaleTimeString()}<br>
+                                        <strong>Raw Response:</strong><br>
+                                        <code>${JSON.stringify(data.raw_response || {}, null, 2)}</code>
+                                    `;
+                                    const tooltip = bootstrap.Tooltip.getInstance(apiInfoIcon);
+                                    if (tooltip) {
+                                        tooltip.dispose();
+                                    }
+                                    apiInfoIcon.setAttribute('title', tooltipContent);
+                                    new bootstrap.Tooltip(apiInfoIcon);
+                                }
+                            }
+                        })
+                        .catch(error => {
+                            console.error('Error toggling device:', error);
+                            statusBtn.className = 'status-btn btn btn-sm btn-danger';
+                            statusBtn.innerHTML = '<i class="fas fa-exclamation-triangle me-1"></i>ERROR';
+                            toggleBtn.disabled = false;
+                            showToast('Failed to toggle device: ' + error.message, 'error');
+                            
+                            // Update tooltip with error info
+                            if (apiInfoIcon) {
+                                const tooltipContent = `
+                                    <strong>Error:</strong> ${error.message}<br>
+                                    <strong>Time:</strong> ${new Date().toLocaleTimeString()}<br>
+                                    <strong>Type:</strong> Network/Server Error
+                                `;
+                                const tooltip = bootstrap.Tooltip.getInstance(apiInfoIcon);
+                                if (tooltip) {
+                                    tooltip.dispose();
+                                }
+                                apiInfoIcon.setAttribute('title', tooltipContent);
+                                new bootstrap.Tooltip(apiInfoIcon);
+                            }
+                        });
+                    });
+                });
+            }
+            
+            // Initialize device controls when DOM is loaded
+            document.addEventListener('DOMContentLoaded', function() {
+                initializeDeviceControls();
+                
+                // Refresh device status every 30 seconds
+                setInterval(() => {
+                    document.querySelectorAll('[data-device-id]').forEach(deviceElement => {
+                        const deviceId = deviceElement.dataset.deviceId;
+                        const statusBtn = deviceElement.querySelector('.status-btn');
+                        const toggleBtn = deviceElement.querySelector('.toggle-btn');
+                        if (statusBtn && toggleBtn) {
+                            updateDeviceStatus(deviceId, statusBtn, toggleBtn, deviceElement.querySelector('.api-info'));
+                        }
+                    });
+                }, 30000);
+                
+                // Fetch device mappings periodically
+                fetchDeviceMappings();
+                setInterval(fetchDeviceMappings, 30000);
+            });
+        </script>
+        <!-- API Credentials Section -->
+        <div class="card mb-4">
+            <div class="card-header">
+                <h5 class="mb-0">
+                    <i class="fas fa-key me-2"></i>API Credentials
+                </h5>
+            </div>
+            <div class="card-body">
+                <div class="alert alert-info mb-4">
+                    <i class="fas fa-info-circle me-2"></i>API credentials are now managed through the admin interface. Click the button below to access the credential management page.
+                </div>
+                <a href="/admin/credentials" class="btn btn-primary">
+                    <i class="fas fa-cog me-2"></i>Manage API Credentials
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <span>&copy; 2025 RettLock Info</span>
+                </div>
+                <div>
+                    <a href="/admin" class="admin-link me-3">
+                        <i class="fas fa-cog me-1"></i>Admin
+                    </a>
+                    <a href="/admin/credentials" class="admin-link">
+                        <i class="fas fa-key me-1"></i>Credentials
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize the form with current date/time
+            initializeForm();
+            
+            // Fetch locks for dropdowns
+            populateLockDropdown();
+            
+            // Fetch device mappings
+            fetchDeviceMappings();
+            
+            // Set up event listeners
+            setupEventListeners();
+        });
+        
+        function setupEventListeners() {
+            // Check lock status button
+            document.getElementById('checkLockBtn')?.addEventListener('click', function() {
+                // Show loading indicator
+                document.getElementById('lockStatus').innerHTML = `
+                    <div class="spinner-container">
+                        <div class="spinner-border" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                    </div>`;
+                
+                fetch('/check_lock', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                })
+                .then(response => response.json())
+                .then(data => {
+                    let statusHtml = '';
+                    if (data.error) {
+                        statusHtml = `<div class="alert alert-danger"><i class="fas fa-exclamation-circle me-2"></i>${data.error}</div>`;
+                    } else {
+                        const locks = data.lock_status;
+                        statusHtml = `
+                            <div class="table-responsive">
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Lock Name</th>
+                                            <th>Lock ID</th>
+                                            <th>Battery</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>`;
+                        
+                        locks.forEach(lock => {
+                            let batteryClass = 'bg-success';
+                            if (lock.battery < 30) {
+                                batteryClass = 'bg-danger';
+                            } else if (lock.battery < 70) {
+                                batteryClass = 'bg-warning';
+                            }
+                            
+                            statusHtml += `
+                                <tr>
+                                    <td>${lock.name || 'Unnamed Lock'}</td>
+                                    <td><code>${lock.id}</code></td>
+                                    <td>
+                                        <div class="progress" style="height: 10px;">
+                                            <div class="progress-bar ${batteryClass}" 
+                                                role="progressbar" 
+                                                style="width: ${lock.battery}%" 
+                                                aria-valuenow="${lock.battery}" 
+                                                aria-valuemin="0" 
+                                                aria-valuemax="100">
+                                            </div>
+                                        </div>
+                                        <small>${lock.battery}%</small>
+                                    </td>
+                                    <td>
+                                        <span class="badge ${lock.status === 'Online' ? 'bg-success' : 'bg-secondary'}">
+                                            ${lock.status}
+                                        </span>
+                                    </td>
+                                </tr>`;
+                        });
+                        
+                        statusHtml += `
+                                    </tbody>
+                                </table>
+                            </div>
+                            <small class="text-muted">Last updated: ${new Date().toLocaleString()}</small>`;
+                    }
+                    
+                    document.getElementById('lockStatus').innerHTML = statusHtml;
+                    
+                    // Update lock count in dashboard
+                    if (data.lock_status) {
+                        document.getElementById('lockCount').textContent = data.lock_status.length;
+                    }
+                })
+                .catch(error => {
+                    console.error('Error checking lock status:', error);
+                    document.getElementById('lockStatus').innerHTML = `
+                        <div class="alert alert-danger">
+                            <i class="fas fa-exclamation-circle me-2"></i>Error checking lock status. Please try again later.
+                        </div>`;
+                });
+            });
+            
+            // Toggle LED button
+            document.getElementById('toggleLedBtn')?.addEventListener('click', function() {
+                const currentStatus = document.querySelector('#ledStatus span').classList.contains('led-on');
+                
+                // Disable button during request
+                this.disabled = true;
+                this.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Processing...';
+                
+                fetch('/toggle_led', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ status: !currentStatus })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    // Re-enable button
+                    this.disabled = false;
+                    
+                    if (data.status) {
+                        document.querySelector('#ledStatus span').className = 'led-on';
+                        document.querySelector('#ledStatus span').textContent = 'ON';
+                        this.className = 'btn btn-danger';
+                        this.innerHTML = '<i class="fas fa-lightbulb me-2"></i>Turn LED OFF';
+                    } else {
+                        document.querySelector('#ledStatus span').className = 'led-off';
+                        document.querySelector('#ledStatus span').textContent = 'OFF';
+                        this.className = 'btn btn-success';
+                        this.innerHTML = '<i class="fas fa-lightbulb me-2"></i>Turn LED ON';
+                    }
+                    
+                    // Update dashboard LED status
+                    const dashboardLed = document.querySelector('.dashboard-stats .stats-value span');
+                    if (dashboardLed) {
+                        if (data.status) {
+                            dashboardLed.className = 'light-on';
+                        } else {
+                            dashboardLed.className = 'light-off';
+                        }
+                    }
+                    
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'LED Status Updated',
+                        text: `LED is now ${data.status ? 'ON' : 'OFF'}`,
+                        timer: 2000,
+                        showConfirmButton: false
+                    });
+                })
+                .catch(error => {
+                    console.error('Error toggling LED:', error);
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: 'Failed to toggle LED. Please try again.'
+                    });
+                });
+            });
+            
+            // Delete guest buttons
+            document.querySelectorAll('.delete-guest')?.forEach(button => {
+                button.addEventListener('click', function() {
+                    const guestId = this.getAttribute('data-guest-id');
+                    handleDeleteGuest(guestId);
+                });
+            });
+        }
+        
+        function initializeForm() {
+            // Set default start and end dates for the add guest form
+            const now = new Date();
+            const startDate = new Date(now);
+            const endDate = new Date(now);
+            endDate.setDate(endDate.getDate() + 7); // Default to 7 days later
+            
+            // Format dates for datetime-local input
+            const formatDateForInput = (date) => {
+                return date.toISOString().slice(0, 16);
+            };
+            
+            const startDateInput = document.getElementById('startDate');
+            const endDateInput = document.getElementById('endDate');
+            
+            if (startDateInput) startDateInput.value = formatDateForInput(startDate);
+            if (endDateInput) endDateInput.value = formatDateForInput(endDate);
+        }
+        
+        function populateLockDropdown() {
+            fetch('/get_locks')
+                .then(response => response.json())
+                .then(data => {
+                    const lockIdSelect = document.getElementById('lockId');
+                    const linkLockIdSelect = document.getElementById('linkLockId');
+                    
+                    if (lockIdSelect) {
+                        lockIdSelect.innerHTML = '<option value="">Select a lock...</option>';
+                        
+                        if (data.error) {
+                            lockIdSelect.innerHTML += `<option value="" disabled>${data.error}</option>`;
+                        } else if (data.locks && data.locks.length > 0) {
+                            data.locks.forEach(lock => {
+                                const option = document.createElement('option');
+                                option.value = lock.id;
+                                option.textContent = lock.name || `Lock ${lock.id}`;
+                                lockIdSelect.appendChild(option);
+                            });
+                            
+                            // Update lock count in dashboard
+                            document.getElementById('lockCount').textContent = data.locks.length;
+                        } else {
+                            lockIdSelect.innerHTML += '<option value="" disabled>No locks available</option>';
+                        }
+                    }
+                    
+                    if (linkLockIdSelect) {
+                        linkLockIdSelect.innerHTML = '<option value="">Select a lock...</option>';
+                        
+                        if (data.error) {
+                            linkLockIdSelect.innerHTML += `<option value="" disabled>${data.error}</option>`;
+                        } else if (data.locks && data.locks.length > 0) {
+                            data.locks.forEach(lock => {
+                                const option = document.createElement('option');
+                                option.value = lock.id;
+                                option.textContent = lock.name || `Lock ${lock.id}`;
+                                linkLockIdSelect.appendChild(option);
+                            });
+                        } else {
+                            linkLockIdSelect.innerHTML += '<option value="" disabled>No locks available</option>';
+                        }
+                    }
+                })
+                .catch(error => {
+                    console.error('Error fetching locks:', error);
+                    
+                    if (document.getElementById('lockId')) {
+                        document.getElementById('lockId').innerHTML = 
+                            '<option value="">Error loading locks</option>';
+                    }
+                    
+                    if (document.getElementById('linkLockId')) {
+                        document.getElementById('linkLockId').innerHTML = 
+                            '<option value="">Error loading locks</option>';
+                    }
+                });
+        }
+        
+        function fetchDeviceMappings() {
+            fetch('/device_mappings')
+                .then(response => response.json())
+                .then(data => {
+                    const mappingsContainer = document.getElementById('deviceMappings');
+                    
+                    if (!mappingsContainer) return;
+                    
+                    if (data.error) {
+                        mappingsContainer.innerHTML = `
+                            <div class="alert alert-danger">
+                                <i class="fas fa-exclamation-circle me-2"></i>${data.error}
+                            </div>`;
+                    } else if (Array.isArray(data) && data.length > 0) {
+                        let mappingsHtml = '';
+                        
+                        data.forEach(mapping => {
+                            mappingsHtml += `
+                                <div class="list-group-item" data-device-id="${mapping.device_id}" data-lock-id="${mapping.lock_id}" data-lock-name="${mapping.lock_name || 'Unnamed Lock'}" data-device-name="${mapping.device_name || 'Unnamed Device'}">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <h6 class="mb-1">${mapping.lock_name || 'Unnamed Lock'}</h6>
+                                            <small><strong>Lock ID:</strong> <code>${mapping.lock_id}</code></small><br>
+                                            <small><strong>Device ID:</strong> <code>${mapping.device_id}</code></small><br>
+                                            <small><strong>Device Name:</strong> ${mapping.device_name || 'Unnamed Device'}</small>
+                                            <div class="mt-2">
+                                                <span class="status-btn btn btn-sm btn-warning" title="Loading status...">
+                                                    <i class="fas fa-sync fa-spin me-1"></i>Loading
+                                                </span>
+                                                <button class="toggle-btn btn btn-sm btn-primary" disabled>
+                                                    <i class="fas fa-power-off me-1"></i>TURN ON
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <button class="btn btn-sm btn-danger unlink-device" 
+                                                    onclick="unlinkDevice('${mapping.lock_id}')"
+                                                    data-lock-id="${mapping.lock_id}">
+                                                <i class="fas fa-unlink me-2"></i>UNLINK
+                                            </button>
+                                            <i class="fas fa-info-circle ms-2 text-muted api-info" 
+                                               style="cursor: help;" 
+                                               data-bs-toggle="tooltip" 
+                                               data-bs-html="true"
+                                               title="Loading..."></i>
+                                        </div>
+                                    </div>
+                                </div>`;
+                        });
+                        mappingsContainer.innerHTML = mappingsHtml;
+                        
+                        // Initialize device controls for new elements
+                        initializeDeviceControls();
+                        
+                        // Initialize tooltips for new elements
+                        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+                        tooltipTriggerList.forEach(function(tooltipTriggerEl) {
+                            new bootstrap.Tooltip(tooltipTriggerEl);
+                        });
+                    } else {
+                        mappingsContainer.innerHTML = `
+                            <div class="alert alert-info">
+                                <i class="fas fa-info-circle me-2"></i>No device mappings found.
+                            </div>`;
+                    }
+                })
+                .catch(error => {
+                    console.error('Error fetching device mappings:', error);
+                    const mappingsContainer = document.getElementById('deviceMappings');
+                    if (mappingsContainer) {
+                        mappingsContainer.innerHTML = `
+                            <div class="alert alert-danger">
+                                <i class="fas fa-exclamation-circle me-2"></i>Error loading device mappings. Please try again later.
+                            </div>`;
+                    }
+                });
+        }
+        
+        function handleDeleteGuest(guestId) {
+            Swal.fire({
+                title: 'Delete Guest?',
+                text: 'This will permanently remove the guest and their passcode. This action cannot be undone.',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#e63946',
+                cancelButtonColor: '#6c757d',
+                confirmButtonText: 'Yes, delete guest',
+                cancelButtonText: 'Cancel'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    fetch(`/delete_guest/${guestId}`, {
+                        method: 'POST'
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.error) {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Error',
+                                text: data.error
+                            });
+                        } else {
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Guest Deleted',
+                                text: 'The guest has been successfully deleted.',
+                                timer: 2000,
+                                showConfirmButton: false
+                            }).then(() => {
+                                // Remove the guest card from the UI or reload the page
+                                location.reload();
+                            });
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error deleting guest:', error);
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: 'Failed to delete guest. Please try again.'
+                        });
+                    });
+                }
+            });
+        }
+        
+        function unlinkDevice(lockId) {
+            Swal.fire({
+                title: 'Unlink Device?',
+                text: 'This will remove the mapping between the TTLock and Tuya device. This action cannot be undone.',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#e63946',
+                cancelButtonColor: '#6c757d',
+                confirmButtonText: 'Yes, unlink device',
+                cancelButtonText: 'Cancel'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    fetch('/unlink_device', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ lock_id: lockId })
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.error) {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Error',
+                                text: data.error
+                            });
+                        } else {
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Device Unlinked',
+                                text: 'The device has been successfully unlinked.',
+                                timer: 2000,
+                                showConfirmButton: false
+                            }).then(() => {
+                                // Refresh the device mappings
+                                fetchDeviceMappings();
+                            });
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error unlinking device:', error);
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: 'Failed to unlink device. Please try again.'
+                        });
+                    });
+                }
+            });
+        }
+        
+        // Initialize the page when DOM is fully loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize form with default values
+            initializeForm();
+            
+            // Populate lock dropdowns
+            populateLockDropdown();
+            
+            // Fetch and display device mappings
+            fetchDeviceMappings();
+            
+            // Set up all event listeners
+            setupEventListeners();
+            
+            // Trigger lock status check on page load
+            document.getElementById('checkLockBtn')?.click();
+            
+            // Initialize tooltips
+            const tooltips = document.querySelectorAll('[data-bs-toggle="tooltip"]');
+            tooltips.forEach(tooltip => {
+                new bootstrap.Tooltip(tooltip);
+            });
+            
+            document.querySelectorAll('.light-control').forEach(function(control) {
+                const deviceId = control.dataset.deviceId;
+                const statusBtn = control.querySelector('.light-status');
+                const toggleBtn = control.querySelector('.light-toggle');
+                const apiInfo = control.querySelector('.api-info');
+                
+                function updateLightStatus() {
+                    fetch(`/device/${deviceId}/light/status`)
+                        .then(response => response.json())
+                        .then(data => {
+                            // Update API info tooltip
+                            const tooltipContent = `
+                                <div class='text-start'>
+                                    <strong>API Response:</strong><br>
+                                    <pre style='max-width: 300px; white-space: pre-wrap;'>${JSON.stringify(data, null, 2)}</pre>
+                                </div>`;
+                            const tooltip = bootstrap.Tooltip.getInstance(apiInfo);
+                            if (tooltip) {
+                                apiInfo.setAttribute('data-bs-original-title', tooltipContent);
+                                tooltip.update();
+                            }
+
+                            if (data.success) {
+                                statusBtn.className = 'status-btn btn btn-sm ' + (data.status ? 'btn-success' : 'btn-secondary');
+                                statusBtn.innerHTML = `<i class="fas fa-lightbulb me-1"></i>${data.status ? 'On' : 'Off'}`;
+                                toggleBtn.disabled = false;
+                            } else {
+                                statusBtn.className = 'status-btn btn btn-sm btn-warning';
+                                statusBtn.innerHTML = '<i class="fas fa-exclamation-triangle me-1"></i>ERROR';
+                                toggleBtn.disabled = true;
+                            }
+                        })
+                        .catch(error => {
+                            console.error('Error:', error);
+                            statusBtn.className = 'status-btn btn btn-sm btn-danger';
+                            statusBtn.innerHTML = '<i class="fas fa-exclamation-circle me-1"></i>ERROR';
+                            toggleBtn.disabled = true;
+                            
+                            // Update API info tooltip with error
+                            const tooltipContent = `
+                                <div class='text-start text-danger'>
+                                    <strong>Error:</strong><br>
+                                    ${error.message || 'Failed to get light status'}
+                                </div>`;
+                            const tooltip = bootstrap.Tooltip.getInstance(apiInfo);
+                            if (tooltip) {
+                                apiInfo.setAttribute('data-bs-original-title', tooltipContent);
+                                tooltip.update();
+                            }
+                        });
+                }
+                
+                updateLightStatus();
+                
+                // Update status every 30 seconds
+                setInterval(updateLightStatus, 30000);
+            });
+        });
+    </script>
+    <script>
+        // Utility functions for UI feedback
+        function showLoading(elementId) {
+            const element = document.getElementById(elementId);
+            if (element) {
+                element.classList.add('disabled');
+                element.setAttribute('data-original-html', element.innerHTML);
+                element.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Loading...';
+            }
+        }
+
+        function hideLoading(elementId) {
+            const element = document.getElementById(elementId);
+            if (element) {
+                element.classList.remove('disabled');
+                const originalHtml = element.getAttribute('data-original-html');
+                if (originalHtml) {
+                    element.innerHTML = originalHtml;
+                }
+            }
+        }
+
+        function showToast(message, type = 'info') {
+            const toastContainer = document.getElementById('toastContainer');
+            if (!toastContainer) {
+                const container = document.createElement('div');
+                container.id = 'toastContainer';
+                container.style.position = 'fixed';
+                container.style.top = '20px';
+                container.style.right = '20px';
+                container.style.zIndex = '1050';
+                document.body.appendChild(container);
+            }
+            
+            const toast = document.createElement('div');
+            toast.className = `toast align-items-center border-0 bg-${type}`;
+            toast.setAttribute('role', 'alert');
+            toast.setAttribute('aria-live', 'assertive');
+            toast.setAttribute('aria-atomic', 'true');
+            
+            toast.innerHTML = `
+                <div class="d-flex">
+                    <div class="toast-body text-white">
+                        ${message}
+                    </div>
+                    <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+            `;
+            
+            document.getElementById('toastContainer').appendChild(toast);
+            const bsToast = new bootstrap.Toast(toast);
+            bsToast.show();
+            
+            toast.addEventListener('hidden.bs.toast', () => {
+                toast.remove();
+            });
+        }
+
+        // Enhanced device status functions
+        async function checkLockStatus() {
+            const statusBtn = document.getElementById('checkStatusBtn');
+            showLoading('checkStatusBtn');
+            
+            try {
+                const response = await fetch('/check_lock');
+                const data = await response.json();
+                
+                if (data.success) {
+                    showToast('Lock status updated successfully', 'success');
+                    updateLockStatusDisplay(data);
+                } else {
+                    showToast(`Error: ${data.error || 'Failed to update lock status'}`, 'danger');
+                }
+            } catch (error) {
+                console.error('Error checking lock status:', error);
+                showToast('Failed to check lock status. See console for details.', 'danger');
+            } finally {
+                hideLoading('checkStatusBtn');
+            }
+        }
+
+        async function toggleLight(deviceId) {
+            const toggleBtn = document.querySelector(`button[data-device-id="${deviceId}"]`);
+            if (toggleBtn) {
+                showLoading(toggleBtn.id);
+            }
+            
+            try {
+                const response = await fetch(`/device/${deviceId}/light/toggle`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+                
+                const data = await response.json();
+                
+                if (data.success) {
+                    showToast(`Light ${data.new_state ? 'turned on' : 'turned off'} successfully`, 'success');
+                    // Update UI state
+                    if (toggleBtn) {
+                        toggleBtn.classList.toggle('btn-success', data.new_state);
+                        toggleBtn.classList.toggle('btn-secondary', !data.new_state);
+                    }
+                } else {
+                    showToast(`Error: ${data.error || 'Failed to toggle light'}`, 'danger');
+                }
+            } catch (error) {
+                console.error('Error toggling light:', error);
+                showToast('Failed to toggle light. See console for details.', 'danger');
+            } finally {
+                if (toggleBtn) {
+                    hideLoading(toggleBtn.id);
+                }
+            }
+        }
+
+        async function unlinkDevice(lockId) {
+            if (!confirm('Are you sure you want to unlink this device?')) {
+                return;
+            }
+            
+            const unlinkBtn = document.querySelector(`button[data-lock-id="${lockId}"]`);
+            if (unlinkBtn) {
+                showLoading(unlinkBtn.id);
+            }
+            
+            try {
+                const response = await fetch(`/unlink_device/${lockId}`, {
+                    method: 'POST'
+                });
+                
+                const data = await response.json();
+                
+                if (data.success) {
+                    showToast('Device unlinked successfully', 'success');
+                    // Remove the mapping from UI
+                    const mappingElement = unlinkBtn.closest('.list-group-item');
+                    if (mappingElement) {
+                        mappingElement.remove();
+                    }
+                } else {
+                    showToast(`Error: ${data.error || 'Failed to unlink device'}`, 'danger');
+                }
+            } catch (error) {
+                console.error('Error unlinking device:', error);
+                showToast('Failed to unlink device. See console for details.', 'danger');
+            } finally {
+                if (unlinkBtn) {
+                    hideLoading(unlinkBtn.id);
+                }
+            }
+        }
+
+        // Initialize tooltips and toasts on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize all tooltips
+            var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+            tooltipTriggerList.map(function(tooltipTriggerEl) {
+                return new bootstrap.Tooltip(tooltipTriggerEl);
+            });
+        });
+    </script>
+</body>
+</html>

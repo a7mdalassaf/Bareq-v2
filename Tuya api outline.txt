@@ -1,0 +1,784 @@
+[Tuya.com](https://www.tuya.com)
+[Docs](https://developer.tuya.com/en/overview)
+[Platform](https://developer.tuya.com/en/docs/iot)
+[TuyaOS](https://developer.tuya.com/en/docs/iot-device-dev)
+[Smart App SDK](https://developer.tuya.com/en/docs/app-development/)
+[Cloud Development](https://developer.tuya.com/en/docs/cloud)
+[MiniApp](https://developer.tuya.com/en/miniapp/guide)
+[Cube](https://developer.tuya.com/en/docs/cubeprivate-cloud)
+[Go to Docs Center](https://developer.tuya.com/en/overview)
+[Popular Activity!｜IoT Cloud Booster](https://promotion-static.tuyacn.com/fe-static/cms/513171492423585792/index.html)
+[Community](https://www.tuyaos.com/viewforum.php?f=22)
+[Tools](https://developer.tuya.com/en/docs/iot/device-control-best-practice-python?id=Kav4zc0nphsn5)
+[Wind IDE](https://developer.tuya.com/en/docs/iot-device-dev/tuyaos-wind-ide?id=Kbfy6kfuuqqu3)
+[Tuya MiniApp IDE](https://developer.tuya.com/en/miniapp/devtools)
+[Module Debugging Assistant](https://developer.tuya.com/en/docs/iot/module-debugging-assistant-instruction?id=K9hs0cj3lf0au)
+[Demo Board](https://developer.tuya.com/en/docs/iot-device-dev/tuyaos-development-board?id=Kcke8d4n8c9om)
+[Learning](https://developer.tuya.com/en/docs/iot/device-control-best-practice-python?id=Kav4zc0nphsn5)
+[MiniApp Codelabs](https://developer.tuya.com/en/miniapp-codelabs)
+[Demo Centre](https://developer.tuya.com/en/demo/tutorials)
+[Service Providers](https://www.tuya.com/provider?type=1)
+[Docs](https://developer.tuya.com/en/docs/iot/device-control-best-practice-python?id=Kav4zc0nphsn5)
+[Platform](https://developer.tuya.com/en/docs/iot)
+[TuyaOS](https://developer.tuya.com/en/docs/iot-device-dev)
+[Smart App SDK](https://developer.tuya.com/en/docs/app-development/)
+[Cloud Development](https://developer.tuya.com/en/docs/cloud)
+[MiniApp](https://developer.tuya.com/en/miniapp/guide)
+[Cube](https://developer.tuya.com/en/docs/cubeprivate-cloud)
+[Go to Docs Center](https://developer.tuya.com/en/overview)
+[Community](https://www.tuyaos.com/viewforum.php?f=22)
+[Tools](https://developer.tuya.com/en/docs/iot/device-control-best-practice-python?id=Kav4zc0nphsn5)
+[Wind IDE](https://developer.tuya.com/en/docs/iot-device-dev/tuyaos-wind-ide?id=Kbfy6kfuuqqu3)
+[Tuya MiniApp IDE](https://developer.tuya.com/en/miniapp/devtools)
+[Module Debugging Assistant](https://developer.tuya.com/en/docs/iot/module-debugging-assistant-instruction?id=K9hs0cj3lf0au)
+[Demo Board](https://developer.tuya.com/en/docs/iot-device-dev/tuyaos-development-board?id=Kcke8d4n8c9om)
+[Learning](https://developer.tuya.com/en/docs/iot/device-control-best-practice-python?id=Kav4zc0nphsn5)
+[MiniApp Codelabs](https://developer.tuya.com/en/miniapp-codelabs)
+[Demo Centre](https://developer.tuya.com/en/demo/tutorials)
+[Service Providers](https://www.tuya.com/provider?type=1)
+[Tuya Developer Platform](https://developer.tuya.com/docs/iot)
+[Overview](https://developer.tuya.com/en/docs/iot/introduction-of-tuya?id=K914joffendwh)
+[Quick Start](https://developer.tuya.com/en/docs/iot/device-intelligentize-in-5-minutes?id=K914joxbogkm6)
+[Product Development](https://developer.tuya.com/en/docs/iot/development-overview?id=Ka3redtxl6g4k)
+[App Development](https://developer.tuya.com/en/docs/iot/app-development?id=Kaacelrbxwoch)
+[MiniApp Development](https://developer.tuya.com/en/docs/iot/miniapp-development?id=Kdntpibtrsjek)
+[Cloud Development](https://developer.tuya.com/en/docs/iot/introduction-to-tuya-iot-platform?id=Ka6vijvqb3uhn)
+[Pricing](https://developer.tuya.com/en/docs/iot/membership-service?id=K9m8k45jwvg9j)
+[Cloud Integration Solutions](https://developer.tuya.com/en/docs/iot/cloud-solution?id=Kbvwnm3i53sjx)
+[Smart Home Learning Map](https://developer.tuya.com/en/docs/iot/smart-home-learning-map?id=Kbvwopnv8pvlk)
+[Custom Development Learning Map](https://developer.tuya.com/en/docs/iot/custom-develop-learning-map?id=Kbvwsjkopb3m4)
+[Operation Guide](https://developer.tuya.com/en/docs/iot/operation-guide?id=Ka79gg53iivyk)
+[API Request](https://developer.tuya.com/en/docs/iot/api-reference?id=Ka7qb7vhber64)
+[Best Practice](https://developer.tuya.com/en/docs/iot/best-practice?id=Ka5o4hm44y4pb)
+[IoT Core Device Management](https://developer.tuya.com/en/docs/iot/space-device-control-practice?id=Kcoxmvivehrn0)
+[IAM Practice](https://developer.tuya.com/en/docs/iot/resource-auth-iam-practice?id=Kcoyj5xun09q0)
+[Device Control Practice](https://developer.tuya.com/en/docs/iot/device-control-practice?id=Kat1jdeul4uf8)
+
+[Step 1: Configure Cloud Project](https://developer.tuya.com/en/docs/iot/config-cloud-project?id=Kat2eytbffx3v)
+[Step 2: Add Device](https://developer.tuya.com/en/docs/iot/link-devices?id=Kat2fh417hhz2)
+[Step 3: Debug Device](https://developer.tuya.com/en/docs/iot/debug?id=Kat5sq6hd1hjt)
+[Step 4: Develop Services](https://developer.tuya.com/en/docs/iot/device-control?id=Kat5uh8mzxwz2)
+[Develop with Java SDK](https://developer.tuya.com/en/docs/iot/device-control-best-practice-java?id=Kat2uf0cwn9k9)
+[Develop with Python SDK](https://developer.tuya.com/en/docs/iot/device-control-best-practice-python?id=Kav4zc0nphsn5)
+[Develop with Go SDK](https://developer.tuya.com/en/docs/iot/device-control-best-practice-go?id=Katymf1d9h4y6)
+[Develop with Node.js SDK](https://developer.tuya.com/en/docs/iot/device-control-best-practice-nodejs?id=Kaunfr776vomb)
+[Integrating Home Assistant & Homebridge](https://developer.tuya.com/en/docs/iot/HA_HB_Bestpractice?id=Kamfbszoffjmw)
+[Develop Projects on Assets, Users and App](https://developer.tuya.com/en/docs/iot/industrial-project-androidapp?id=Kaotgbwiwzy99)
+[Debug Device Linkage by Virtual Device](https://developer.tuya.com/en/docs/iot/Cloud_development_project_debugging-virtual_device?id=Kal4mjrurokdi)
+[Set Postman Environment and Call API Operations](https://developer.tuya.com/en/docs/iot/set-up-postman-environment?id=Ka7o385w1svns)
+[Verify Signature Result](https://developer.tuya.com/en/docs/iot/check-postman-sign?id=Kavfn3820sxg4)
+[Device Control and Message Subscription Practice](https://developer.tuya.com/en/docs/iot/device-control-msg-subription-practice?id=Kbw076k5s4x12)
+[Get Messages by Message Queue](https://developer.tuya.com/en/docs/iot/device-msg-queue-practice?id=Kbw07rq78zcxd)
+[Smart Apartment Practice](https://developer.tuya.com/en/docs/iot/smart-apartment-practice?id=Kbw0av5hufpd5)
+[Smart Office Practice](https://developer.tuya.com/en/docs/iot/smart-office-practice?id=Kbw0hgztqi3j6)
+[OAuth 2.0 Authorization Flow](https://developer.tuya.com/en/docs/iot/authorization-code-page-usage?id=Kdkyz44dz6a7r)
+[Cloud Services](https://developer.tuya.com/en/docs/iot/cloud-service-products?id=Kaiuyyesxw7rd)
+[Message Queue](https://developer.tuya.com/en/docs/iot/message-service?id=K95zu0nzdw9cd)
+[Standard Instruction Set](https://developer.tuya.com/en/docs/iot/standarddescription?id=K9i5ql6waswzq)
+[Cloud Development FAQs](https://developer.tuya.com/en/docs/iot/faq?id=K9cjfvaoqyz2v)
+[Common Parameters](https://developer.tuya.com/en/docs/iot/frequent_used_paremeter?id=Katrvksxs7q4w)
+[AI Agent Development](https://developer.tuya.com/en/docs/iot/agent?id=Kdxnn04ancnc8)
+[SaaS Development](https://developer.tuya.com/en/docs/iot/SaaS-develop?id=Kbtqi5uecpvkc)
+[Data Services](https://developer.tuya.com/en/docs/iot/data-center?id=K914jk01pvsqu)
+[Product Solutions](https://developer.tuya.com/en/docs/iot/smart-product-solutions?id=Ka5nx1vj8kisg)
+[Operation Management](https://developer.tuya.com/en/docs/iot/operation-management?id=Kbd9xv2m3h25w)
+[Smart Industries](https://developer.tuya.com/en/docs/iot/smart-business?id=Ka5oc1bq0aej9)
+[Manufacturing](https://developer.tuya.com/en/docs/iot/production?id=Kbohijqprugxv)
+[API Reference](https://developer.tuya.com/en/docs/iot/api-reference?id=Kbd2pu2ompov0)
+[SDK Reference](https://developer.tuya.com/en/docs/iot/sdk-reference?id=Kbd2uhl6cbha1)
+[Downloads](https://developer.tuya.com/en/docs/iot/download?id=Kbd668dicz9r6)
+[Service & Support](https://developer.tuya.com/en/docs/iot/troubleshooting?id=K9258orwg9heh)
+[Legacy Topics](https://developer.tuya.com/en/docs/iot/legacy-topics?id=Kaiuzxaxtoxfh)
+[Tuya Developer Platform](https://developer.tuya.com/en/docs/iot)
+[Cloud Development](https://developer.tuya.com/en/docs/iot/introduction-to-tuya-iot-platform?id=Ka6vijvqb3uhn)
+[Best Practice](https://developer.tuya.com/en/docs/iot/best-practice?id=Ka5o4hm44y4pb)
+[Device Control Practice](https://developer.tuya.com/en/docs/iot/device-control-practice?id=Kat1jdeul4uf8)
+[Step 4: Develop Services](https://developer.tuya.com/en/docs/iot/device-control?id=Kat5uh8mzxwz2)
+
+# Develop with Python SDK
+
+Last Updated on : 2024-06-20 07:26:26
+This topic describes how to develop a program to control devices based on the open capabilities and SDK of the Tuya Developer Platform.
+
+## Prerequisites
+
+- [You have created a project](https://developer.tuya.com/en/docs/iot/config-cloud-project?id=Kat2eytbffx3v).
+- [You have added a device](https://developer.tuya.com/en/docs/iot/link-devices?id=Kat2fh417hhz2).
+- [You have installed PyCharm](https://www.jetbrains.com/pycharm/).
+[You have created a project](https://developer.tuya.com/en/docs/iot/config-cloud-project?id=Kat2eytbffx3v)
+[You have added a device](https://developer.tuya.com/en/docs/iot/link-devices?id=Kat2fh417hhz2)
+[You have installed PyCharm](https://www.jetbrains.com/pycharm/)
+
+### Step 1: Set up development environment
+This step is based on the [Tuya-connector-Python](https://github.com/tuya/tuya-connector-python) SDK. Tuya-connector helps you efficiently create cloud development projects regarding the OpenAPI or message subscription capabilities. You can put all the focus on business logic without taking care of server-side programming nor relational databases.
+
+```
+Tuya-connector
+```
+
+1. 
+Get the SDK address at [Tuya-connector-Python](https://github.com/tuya/tuya-connector-python).
+
+
+2. 
+Go to Projects > Get from Version Control > URL, enter the SDK address, and then click Clone.
+
+
+3. 
+(Independent project development) Import Python dependency package.
+
+Note: The GitHub hosting platform contains the SDK source code. The API request used in this topic is the source code in the SDK project. If you develop an independent project, the PIP tool can be used to import the Python dependency package.
+
+Import code: pip3 install tuya-connector-python
+
+Get the SDK address at [Tuya-connector-Python](https://github.com/tuya/tuya-connector-python).
+Go to Projects > Get from Version Control > URL, enter the SDK address, and then click Clone.
+(Independent project development) Import Python dependency package.
+Note: The GitHub hosting platform contains the SDK source code. The API request used in this topic is the source code in the SDK project. If you develop an independent project, the PIP tool can be used to import the Python dependency package.
+Import code: pip3 install tuya-connector-python
+
+```
+pip3 install tuya-connector-python
+```
+
+### Step 2: Edit profile
+Configure environment variables in the py file.
+
+```
+py
+```
+
+- 
+ACCESS_ID and ACCESS_KEY: Enter the values of Access ID and Access Key in the Authorization Key section. For more information, see [Query project information](https://developer.tuya.com/en/docs/iot/manage-projects?id=Ka49p0n8vkzm6).
+
+- 
+API_ENDPOINT: the data center address of API requests. See the tuya-connector-python/tuya_connector/tuya_enums.py file.
+
+- 
+MQ_ENDPOINT: the request address of message subscription. See the tuya-connector-python/tuya_connector/tuya_enums.py file.
+
+
+
+Location
+API_ENDPOINT
+MQ_ENDPOINT
+
+
+
+
+China
+https://openapi.tuyacn.com
+wss://mqe.tuyacn.com:8285/
+
+
+America
+https://openapi.tuyaus.com
+wss://mqe.tuyaus.com:8285/
+
+
+Europe
+https://openapi.tuyaeu.com
+wss://mqe.tuyaeu.com:8285/
+
+
+India
+https://openapi.tuyain.com
+wss://mqe.tuyain.com:8285/
+
+
+
+
+ACCESS_ID and ACCESS_KEY: Enter the values of Access ID and Access Key in the Authorization Key section. For more information, see [Query project information](https://developer.tuya.com/en/docs/iot/manage-projects?id=Ka49p0n8vkzm6).
+
+```
+ACCESS_ID
+```
+
+
+```
+ACCESS_KEY
+```
+
+API_ENDPOINT: the data center address of API requests. See the tuya-connector-python/tuya_connector/tuya_enums.py file.
+
+```
+API_ENDPOINT
+```
+
+
+```
+tuya-connector-python/tuya_connector/tuya_enums.py
+```
+
+MQ_ENDPOINT: the request address of message subscription. See the tuya-connector-python/tuya_connector/tuya_enums.py file.
+
+```
+MQ_ENDPOINT
+```
+
+
+```
+tuya-connector-python/tuya_connector/tuya_enums.py
+```
+
+Example:
+
+```
+ACCESS_ID = "xtu7m*****48ufod"
+ACCESS_KEY = "479bcba6d*******d9c4e080f7"
+API_ENDPOINT = "https://openapi.tuyacn.com"
+MQ_ENDPOINT = "wss://mqe.tuyacn.com:8285/"
+```
+
+
+```
+ACCESS_ID = "xtu7m*****48ufod"
+ACCESS_KEY = "479bcba6d*******d9c4e080f7"
+API_ENDPOINT = "https://openapi.tuyacn.com"
+MQ_ENDPOINT = "wss://mqe.tuyacn.com:8285/"
+```
+
+### Step 3: Control devices
+
+After the project parameters are edited, you can start your coding journey. Device control is a must-have feature.
+The following code block is the sample code for cloud project authorization key authentication and query device details, get device instruction set, send instruction set, and query device status for your reference.
+Sample code of querying devices and issuing instructions: device_control.py
+
+```
+device_control.py
+```
+
+
+```
+import logging
+from tuya_connector import TuyaOpenAPI, TUYA_LOGGER
+
+ACCESS_ID = "xtu7m*****48ufod"
+ACCESS_KEY = "479bcba6d*******d9c4e080f7"
+API_ENDPOINT = "https://openapi.tuyacn.com"
+
+
+
+# Enable debug log
+TUYA_LOGGER.setLevel(logging.DEBUG)
+
+# Init OpenAPI and connect
+openapi = TuyaOpenAPI(API_ENDPOINT, ACCESS_ID, ACCESS_KEY)
+openapi.connect()
+
+# Set up device_id
+DEVICE_ID ="vdevo********74966"
+
+# Call APIs from Tuya
+# Get the device information
+response = openapi.get("/v1.0/iot-03/devices/{}".format(DEVICE_ID))
+
+# Get the instruction set of the device
+response = openapi.get("/v1.0/iot-03/devices/{}/functions".format(DEVICE_ID))
+
+# Send commands
+commands = {'commands': [{'code': 'switch_led', 'value': False}]}
+openapi.post('/v1.0/iot-03/devices/{}/commands'.format(DEVICE_ID), commands)
+
+# Get the status of a single device
+response = openapi.get("/v1.0/iot-03/devices/{}/status".format(DEVICE_ID))
+```
+
+
+```
+import logging
+from tuya_connector import TuyaOpenAPI, TUYA_LOGGER
+
+ACCESS_ID = "xtu7m*****48ufod"
+ACCESS_KEY = "479bcba6d*******d9c4e080f7"
+API_ENDPOINT = "https://openapi.tuyacn.com"
+
+
+
+# Enable debug log
+TUYA_LOGGER.setLevel(logging.DEBUG)
+
+# Init OpenAPI and connect
+openapi = TuyaOpenAPI(API_ENDPOINT, ACCESS_ID, ACCESS_KEY)
+openapi.connect()
+
+# Set up device_id
+DEVICE_ID ="vdevo********74966"
+
+# Call APIs from Tuya
+# Get the device information
+response = openapi.get("/v1.0/iot-03/devices/{}".format(DEVICE_ID))
+
+# Get the instruction set of the device
+response = openapi.get("/v1.0/iot-03/devices/{}/functions".format(DEVICE_ID))
+
+# Send commands
+commands = {'commands': [{'code': 'switch_led', 'value': False}]}
+openapi.post('/v1.0/iot-03/devices/{}/commands'.format(DEVICE_ID), commands)
+
+# Get the status of a single device
+response = openapi.get("/v1.0/iot-03/devices/{}/status".format(DEVICE_ID))
+```
+
+Sample response
+
+### Step 3: Control devices
+
+```
+/Users/even/Documents/SDK/Python/ttuya-connector-python1/venv/bin/python /Users/even/Documents/SDK/Python/ttuya-connector-python/example/device_control.py
+[2021-08-24 16:27:21,832] [tuya-openapi] Request: method = GET,url = https://openapi.tuyacn.com/v1.0/token,params = {'grant_type': 1},body = None,t = 1629793641832
+[2021-08-24 16:27:22,007] [tuya-openapi] Response: {
+  "result": {
+    "access_token": "***",
+    "expire_time": 6147,
+    "refresh_token": "***",
+    "uid": "***"
+  },
+  "success": true,
+  "t": 1629793642090
+}
+[2021-08-24 16:27:22,007] [tuya-openapi] Request: method = GET,url = https://openapi.tuyacn.com/v1.0/iot-03/devices/vdevo********74966,params = None,body = None,t = 1629793642007
+[2021-08-24 16:27:22,183] [tuya-openapi] Response: {
+  "result": {
+    "active_time": 1629792940,
+    "asset_id": "14178********2832",
+    "category": "dj",
+    "category_name": "Light Source",
+    "create_time": 1629792940,
+    "gateway_id": "",
+    "icon": "smart/icon/bay161786******240908156830dd.png",
+    "id": "vdevo********74966",
+    "ip": "***",
+    "lat": "***",
+    "local_key": "***",
+    "lon": "***",
+    "model": "",
+    "name": "Dimmable White Light (C)_SIG-vdevo",
+    "online": true,
+    "product_id": "ppg6apfp",
+    "product_name": "Dimmable White Light (C)_OEM",
+    "sub": false,
+    "time_zone": "+08:00",
+    "update_time": 1629793223,
+    "uuid": "vdevo********74966"
+  },
+  "success": true,
+  "t": 1629793642263
+}
+[2021-08-24 16:27:22,183] [tuya-openapi] Request: method = GET,url = https://openapi.tuyacn.com/v1.0/iot-03/devices/vdevo********74966/functions,params = None,body = None,t = 1629793642183
+[2021-08-24 16:27:22,256] [tuya-openapi] Response: {
+  "result": {
+    "category": "dj",
+    "functions": [
+      {
+        "code": "switch_led",
+        "desc": "switch led",
+        "name": "switch led",
+        "type": "Boolean",
+        "values": "{}"
+      },
+      {
+        "code": "work_mode",
+        "desc": "work mode",
+        "name": "work mode",
+        "type": "Enum",
+        "values": "{\"range\":[\"white\",\"colour\",\"scene\",\"music\"]}"
+      },
+      {
+        "code": "bright_value_v2",
+        "desc": "bright value v2",
+        "name": "bright value v2",
+        "type": "Integer",
+        "values": "{\"min\":10,\"max\":1000,\"scale\":0,\"step\":1}"
+      },
+      {
+        "code": "scene_data_v2",
+        "desc": "scene data v2",
+        "name": "scene data v2",
+        "type": "Json",
+        "values": "{\"scene_num\":{\"min\":1,\"scale\":0,\"max\":8,\"step\":1},\"scene_units\": {\"unit_change_mode\":{\"range\":[\"static\",\"jump\",\"gradient\"]},\"unit_switch_duration\":{\"min\":0,\"scale\":0,\"max\":100,\"step\":1},\"unit_gradient_duration\":{\"min\":0,\"scale\":0,\"max\":100,\"step\":1},\"bright\":{\"min\":0,\"scale\":0,\"max\":1000,\"step\":1},\"temperature\":{\"min\":0,\"scale\":0,\"max\":1000,\"step\":1},\"h\":{\"min\":0,\"scale\":0,\"unit\":\"\",\"max\":360,\"step\":1},\"s\":{\"min\":0,\"scale\":0,\"unit\":\"\",\"max\":1000,\"step\":1},\"v\":{\"min\":0,\"scale\":0,\"unit\":\"\",\"max\":1000,\"step\":1}}}"
+      },
+      {
+        "code": "countdown_1",
+        "desc": "countdown 1",
+        "name": "countdown 1",
+        "type": "Integer",
+        "values": "{\"unit\":\"s\",\"min\":0,\"max\":86400,\"scale\":0,\"step\":1}"
+      }
+    ]
+  },
+  "success": true,
+  "t": 1629793642338
+}
+[2021-08-24 16:27:22,256] [tuya-openapi] Request: method = POST,url = https://openapi.tuyacn.com/v1.0/iot-03/devices/vdevo********74966/commands,params = None,body = {'commands': [{'code': 'switch_led', 'value': False}]},t = 1629793642256
+[2021-08-24 16:27:22,386] [tuya-openapi] Response: {
+  "result": true,
+  "success": true,
+  "t": 1629793642470
+}
+[2021-08-24 16:27:22,386] [tuya-openapi] Request: method = GET,url = https://openapi.tuyacn.com/v1.0/iot-03/devices/vdevo********74966/status,params = None,body = None,t = 1629793642386
+[2021-08-24 16:27:22,461] [tuya-openapi] Response: {
+  "result": [
+    {
+      "code": "switch_led",
+      "value": false
+    },
+    {
+      "code": "work_mode",
+      "value": "white"
+    },
+    {
+      "code": "bright_value_v2",
+      "value": 10
+    },
+    {
+      "code": "scene_data_v2",
+      "value": ""
+    },
+    {
+      "code": "countdown_1",
+      "value": 0
+    }
+  ],
+  "success": true,
+  "t": 1629793642546
+}
+
+Process finished with exit code 0
+```
+
+### Step 3: Control devices
+
+```
+/Users/even/Documents/SDK/Python/ttuya-connector-python1/venv/bin/python /Users/even/Documents/SDK/Python/ttuya-connector-python/example/device_control.py
+[2021-08-24 16:27:21,832] [tuya-openapi] Request: method = GET,url = https://openapi.tuyacn.com/v1.0/token,params = {'grant_type': 1},body = None,t = 1629793641832
+[2021-08-24 16:27:22,007] [tuya-openapi] Response: {
+  "result": {
+    "access_token": "***",
+    "expire_time": 6147,
+    "refresh_token": "***",
+    "uid": "***"
+  },
+  "success": true,
+  "t": 1629793642090
+}
+[2021-08-24 16:27:22,007] [tuya-openapi] Request: method = GET,url = https://openapi.tuyacn.com/v1.0/iot-03/devices/vdevo********74966,params = None,body = None,t = 1629793642007
+[2021-08-24 16:27:22,183] [tuya-openapi] Response: {
+  "result": {
+    "active_time": 1629792940,
+    "asset_id": "14178********2832",
+    "category": "dj",
+    "category_name": "Light Source",
+    "create_time": 1629792940,
+    "gateway_id": "",
+    "icon": "smart/icon/bay161786******240908156830dd.png",
+    "id": "vdevo********74966",
+    "ip": "***",
+    "lat": "***",
+    "local_key": "***",
+    "lon": "***",
+    "model": "",
+    "name": "Dimmable White Light (C)_SIG-vdevo",
+    "online": true,
+    "product_id": "ppg6apfp",
+    "product_name": "Dimmable White Light (C)_OEM",
+    "sub": false,
+    "time_zone": "+08:00",
+    "update_time": 1629793223,
+    "uuid": "vdevo********74966"
+  },
+  "success": true,
+  "t": 1629793642263
+}
+[2021-08-24 16:27:22,183] [tuya-openapi] Request: method = GET,url = https://openapi.tuyacn.com/v1.0/iot-03/devices/vdevo********74966/functions,params = None,body = None,t = 1629793642183
+[2021-08-24 16:27:22,256] [tuya-openapi] Response: {
+  "result": {
+    "category": "dj",
+    "functions": [
+      {
+        "code": "switch_led",
+        "desc": "switch led",
+        "name": "switch led",
+        "type": "Boolean",
+        "values": "{}"
+      },
+      {
+        "code": "work_mode",
+        "desc": "work mode",
+        "name": "work mode",
+        "type": "Enum",
+        "values": "{\"range\":[\"white\",\"colour\",\"scene\",\"music\"]}"
+      },
+      {
+        "code": "bright_value_v2",
+        "desc": "bright value v2",
+        "name": "bright value v2",
+        "type": "Integer",
+        "values": "{\"min\":10,\"max\":1000,\"scale\":0,\"step\":1}"
+      },
+      {
+        "code": "scene_data_v2",
+        "desc": "scene data v2",
+        "name": "scene data v2",
+        "type": "Json",
+        "values": "{\"scene_num\":{\"min\":1,\"scale\":0,\"max\":8,\"step\":1},\"scene_units\": {\"unit_change_mode\":{\"range\":[\"static\",\"jump\",\"gradient\"]},\"unit_switch_duration\":{\"min\":0,\"scale\":0,\"max\":100,\"step\":1},\"unit_gradient_duration\":{\"min\":0,\"scale\":0,\"max\":100,\"step\":1},\"bright\":{\"min\":0,\"scale\":0,\"max\":1000,\"step\":1},\"temperature\":{\"min\":0,\"scale\":0,\"max\":1000,\"step\":1},\"h\":{\"min\":0,\"scale\":0,\"unit\":\"\",\"max\":360,\"step\":1},\"s\":{\"min\":0,\"scale\":0,\"unit\":\"\",\"max\":1000,\"step\":1},\"v\":{\"min\":0,\"scale\":0,\"unit\":\"\",\"max\":1000,\"step\":1}}}"
+      },
+      {
+        "code": "countdown_1",
+        "desc": "countdown 1",
+        "name": "countdown 1",
+        "type": "Integer",
+        "values": "{\"unit\":\"s\",\"min\":0,\"max\":86400,\"scale\":0,\"step\":1}"
+      }
+    ]
+  },
+  "success": true,
+  "t": 1629793642338
+}
+[2021-08-24 16:27:22,256] [tuya-openapi] Request: method = POST,url = https://openapi.tuyacn.com/v1.0/iot-03/devices/vdevo********74966/commands,params = None,body = {'commands': [{'code': 'switch_led', 'value': False}]},t = 1629793642256
+[2021-08-24 16:27:22,386] [tuya-openapi] Response: {
+  "result": true,
+  "success": true,
+  "t": 1629793642470
+}
+[2021-08-24 16:27:22,386] [tuya-openapi] Request: method = GET,url = https://openapi.tuyacn.com/v1.0/iot-03/devices/vdevo********74966/status,params = None,body = None,t = 1629793642386
+[2021-08-24 16:27:22,461] [tuya-openapi] Response: {
+  "result": [
+    {
+      "code": "switch_led",
+      "value": false
+    },
+    {
+      "code": "work_mode",
+      "value": "white"
+    },
+    {
+      "code": "bright_value_v2",
+      "value": 10
+    },
+    {
+      "code": "scene_data_v2",
+      "value": ""
+    },
+    {
+      "code": "countdown_1",
+      "value": 0
+    }
+  ],
+  "success": true,
+  "t": 1629793642546
+}
+
+Process finished with exit code 0
+```
+
+
+#### Login authentication
+
+### Step 3: Control devices
+
+```
+# Init OpenAPI and connect
+openapi = TuyaOpenAPI(API_ENDPOINT, ACCESS_ID, ACCESS_KEY)
+openapi.connect()
+```
+
+
+```
+# Init OpenAPI and connect
+openapi = TuyaOpenAPI(API_ENDPOINT, ACCESS_ID, ACCESS_KEY)
+openapi.connect()
+```
+
+
+#### Query device details
+
+```
+response = openapi.get("/v1.0/iot-03/devices/{}".format(DEVICE_ID))
+```
+
+
+```
+response = openapi.get("/v1.0/iot-03/devices/{}".format(DEVICE_ID))
+```
+
+
+#### Get the instruction set of device
+
+```
+response = openapi.get("/v1.0/iot-03/devices/{}/functions".format(DEVICE_ID))
+```
+
+
+```
+response = openapi.get("/v1.0/iot-03/devices/{}/functions".format(DEVICE_ID))
+```
+
+
+#### Send commands
+
+```
+commands = {'commands': [{'code': 'switch_led', 'value': true}]}
+openapi.post('/v1.0/iot-03/devices/{}/commands'.format(DEVICE_ID), commands)
+```
+
+
+```
+commands = {'commands': [{'code': 'switch_led', 'value': true}]}
+openapi.post('/v1.0/iot-03/devices/{}/commands'.format(DEVICE_ID), commands)
+```
+
+
+#### Query device status
+
+```
+response = openapi.get("/v1.0/iot-03/devices/{}/status".format(DEVICE_ID))
+```
+
+
+```
+response = openapi.get("/v1.0/iot-03/devices/{}/status".format(DEVICE_ID))
+```
+
+### Step 4: Listen for device status
+
+The following sample code shows how to implement the forwarding feature of the message service. For example, devices get online or offline, and device status is reported.
+The [Message Service](https://developer.tuya.com/en/docs/iot/manage-messages?id=Ka49p7loog3ze) is required to enable this feature. For more information, see Message Service.
+Sample code of message subscription: Mq.py
+
+```
+Mq.py
+```
+
+
+```
+import logging
+from tuya_connector import TUYA_LOGGER, TuyaOpenPulsar, TuyaCloudPulsarTopic
+
+ACCESS_ID = "xtu7m*****48ufod"
+ACCESS_KEY = "479bcba6d*******d9c4e080f7"
+MQ_ENDPOINT = "wss://mqe.tuyacn.com:8285/"
+
+
+
+# Enable debug log
+TUYA_LOGGER.setLevel(logging.DEBUG)
+
+# Init Message Queue
+open_pulsar = TuyaOpenPulsar(
+    ACCESS_ID, ACCESS_KEY, MQ_ENDPOINT, TuyaCloudPulsarTopic.PROD
+)
+# Add Message Queue listener
+open_pulsar.add_message_listener(lambda msg: print(f"---\nexample receive: {msg}"))
+
+# Start Message Queue
+open_pulsar.start()
+
+input()
+# Stop Message Queue
+open_pulsar.stop()
+```
+
+
+```
+import logging
+from tuya_connector import TUYA_LOGGER, TuyaOpenPulsar, TuyaCloudPulsarTopic
+
+ACCESS_ID = "xtu7m*****48ufod"
+ACCESS_KEY = "479bcba6d*******d9c4e080f7"
+MQ_ENDPOINT = "wss://mqe.tuyacn.com:8285/"
+
+
+
+# Enable debug log
+TUYA_LOGGER.setLevel(logging.DEBUG)
+
+# Init Message Queue
+open_pulsar = TuyaOpenPulsar(
+    ACCESS_ID, ACCESS_KEY, MQ_ENDPOINT, TuyaCloudPulsarTopic.PROD
+)
+# Add Message Queue listener
+open_pulsar.add_message_listener(lambda msg: print(f"---\nexample receive: {msg}"))
+
+# Start Message Queue
+open_pulsar.start()
+
+input()
+# Stop Message Queue
+open_pulsar.stop()
+```
+
+Sample response
+
+```
+/Users/even/Documents/SDK/Python/ttuya-connector-python1/venv/bin/python /Users/even/Documents/SDK/Python/ttuya-connector-python/example/Mq.py
+[2021-08-24 16:44:56,274] [tuya-openpulsar] start
+[2021-08-24 16:44:56,274] [tuya-openpulsar] ws-client connect status is not ok.
+                     trying to reconnect for the  1 time
+[2021-08-24 16:44:56,274] [tuya-openpulsar] ---
+ws-client connecting...
+[2021-08-24 16:45:16,198] [tuya-openpulsar] received message origin payload: {"data":"hBfzoXBHP4H5S44R41JYQ6SoW2dYdwIBh/OVljw/BWnHceQwrrF0vuCyPhPmcgsLzQtf9wFhkSQ6IBE2P3yYPvavGWoPpl0r3fkcooWquX8JfG8gnY2R7wUL3Xn4MP48poM3HepgaRZOkpsSKmAqgdxobOPC7kNpk92hmXjB0PEOZ2Du4MbP4NSN49QcJ4MPl9NsbN/2CZpBNFtIusOL74T+aj0XxXAkcYXc/URNLpxRJ3xeyrLXEwM+0nBc+60qvhnd5XA0Y7aFpHh02iIbzZfTbGzf9gmaQTRbSLrDi+/NOqojg8fRo3AW+Cq6m/AtpGIRH8fwQo+FZ9RzGrk+V7bzGsXu3MK7mEqvJpca8eT7C2ZAat2eM9LwAcsDgOoQaWYWiLcqj04ZYzJqLETUGyRFs3pL4aNsWiTEGuQkMHNV0yTN7Nw/PmMonsmdM3aYSaAwQM37T2HC7gqa2exumamfEL7hh+lWoqymRU/hApq0SeBffyniddW2Daw8AUet","protocol":4,"pv":"2.0","sign":"0e523e66fea32a3873b122152fc04c84","t":1629794716261}
+[2021-08-24 16:45:16,198] [tuya-openpulsar] received message descripted: {"dataId":"9aa9d3c4-04b7-11ec-8396-02425b0322e7","devId":"vdevo********74966","productKey":"ppg6apfp","status":[{"1":"true","code":"switch_led","t":1629794716199,"value":true},{"2":"white","code":"work_mode","t":1629794716199,"value":"white"},{"3":"10","code":"bright_value_v2","t":1629794716199,"value":10},{"code":"countdown_1","t":1629794716199,"7":"0","value":0}]}
+---
+example receive: {"dataId":"9aa9d3c4-04b7-11ec-8396-02425b0322e7","devId":"vdevo********74966","productKey":"ppg6apfp","status":[{"1":"true","code":"switch_led","t":1629794716199,"value":true},{"2":"white","code":"work_mode","t":1629794716199,"value":"white"},{"3":"10","code":"bright_value_v2","t":1629794716199,"value":10},{"code":"countdown_1","t":1629794716199,"7":"0","value":0}]}
+```
+
+### Step 4: Listen for device status
+
+```
+/Users/even/Documents/SDK/Python/ttuya-connector-python1/venv/bin/python /Users/even/Documents/SDK/Python/ttuya-connector-python/example/Mq.py
+[2021-08-24 16:44:56,274] [tuya-openpulsar] start
+[2021-08-24 16:44:56,274] [tuya-openpulsar] ws-client connect status is not ok.
+                     trying to reconnect for the  1 time
+[2021-08-24 16:44:56,274] [tuya-openpulsar] ---
+ws-client connecting...
+[2021-08-24 16:45:16,198] [tuya-openpulsar] received message origin payload: {"data":"hBfzoXBHP4H5S44R41JYQ6SoW2dYdwIBh/OVljw/BWnHceQwrrF0vuCyPhPmcgsLzQtf9wFhkSQ6IBE2P3yYPvavGWoPpl0r3fkcooWquX8JfG8gnY2R7wUL3Xn4MP48poM3HepgaRZOkpsSKmAqgdxobOPC7kNpk92hmXjB0PEOZ2Du4MbP4NSN49QcJ4MPl9NsbN/2CZpBNFtIusOL74T+aj0XxXAkcYXc/URNLpxRJ3xeyrLXEwM+0nBc+60qvhnd5XA0Y7aFpHh02iIbzZfTbGzf9gmaQTRbSLrDi+/NOqojg8fRo3AW+Cq6m/AtpGIRH8fwQo+FZ9RzGrk+V7bzGsXu3MK7mEqvJpca8eT7C2ZAat2eM9LwAcsDgOoQaWYWiLcqj04ZYzJqLETUGyRFs3pL4aNsWiTEGuQkMHNV0yTN7Nw/PmMonsmdM3aYSaAwQM37T2HC7gqa2exumamfEL7hh+lWoqymRU/hApq0SeBffyniddW2Daw8AUet","protocol":4,"pv":"2.0","sign":"0e523e66fea32a3873b122152fc04c84","t":1629794716261}
+[2021-08-24 16:45:16,198] [tuya-openpulsar] received message descripted: {"dataId":"9aa9d3c4-04b7-11ec-8396-02425b0322e7","devId":"vdevo********74966","productKey":"ppg6apfp","status":[{"1":"true","code":"switch_led","t":1629794716199,"value":true},{"2":"white","code":"work_mode","t":1629794716199,"value":"white"},{"3":"10","code":"bright_value_v2","t":1629794716199,"value":10},{"code":"countdown_1","t":1629794716199,"7":"0","value":0}]}
+---
+example receive: {"dataId":"9aa9d3c4-04b7-11ec-8396-02425b0322e7","devId":"vdevo********74966","productKey":"ppg6apfp","status":[{"1":"true","code":"switch_led","t":1629794716199,"value":true},{"2":"white","code":"work_mode","t":1629794716199,"value":"white"},{"3":"10","code":"bright_value_v2","t":1629794716199,"value":10},{"code":"countdown_1","t":1629794716199,"7":"0","value":0}]}
+```
+
+## Conclusion
+
+In this topic, you have learned how to use the Python SDK based on the Tuya Developer Platform. You can call device APIs to control smart devices and listen for device status. Thanks to the standard ecosystem of devices, you can extend this control method to all devices of Tuya’s ecosystem, and accelerate your SaaS development based on smart devices without regard to device differences.
+Is this page helpful?
+[Prev DocDevelop with Java SDK](https://developer.tuya.com/en/docs/iot/device-control-best-practice-java?id=Kat2uf0cwn9k9)
+[Next DocDevelop with Go SDK](https://developer.tuya.com/en/docs/iot/device-control-best-practice-go?id=Katymf1d9h4y6)
+Is this page helpful?
+[TuyaOS](https://www.tuya.com/platform/productdev/tuyaos)
+[MCU](https://www.tuya.com/platform/productdev/mcu-standard-protocol)
+[App SDK](https://www.tuya.com/platform/appdev/app-sdk)
+[Smart MiniApp](https://www.tuya.com/platform/appdev/smart-miniapp)
+[IoT Core](https://www.tuya.com/platform/clouddev/iot-core)
+[SaaSFrame](https://www.tuya.com/platform/clouddev/saas-development-framework)
+[Cube Private Cloud](https://www.tuya.com/solution/cube)
+[Smart Hospitality](https://hotel.tuya.com)
+[Smart Residential](https://residential.tuya.com)
+[Commercial Lighting](https://lighting.tuya.com)
+[Smart House & Real Estate](https://realestate.tuya.com/)
+[Developer Community](https://www.tuyaos.com/)
+[Help Center](https://support.tuya.com/en/help)
+[Online Support](https://tuya.echatsoft.com/visitor/pc/chat.html?companyId=529362&echatTag=tuya_en&lan=en)
+[Technical Support](https://service.console.tuya.com)
+[About Tuya](https://www.tuya.com/about)
+[News](https://www.tuya.com/news)
+[Security and Compliance](https://www.tuya.com/rule)
+[Investor Relations](https://ir.tuya.com)
+[Partner with Us](https://www.tuya.com/provider?type=1)
+[English](https://developer.tuya.com/en/docs/iot/device-control-best-practice-python?id=Kav4zc0nphsn5)
+[简体中文](https://developer.tuya.com/en/docs/iot/device-control-best-practice-python?id=Kav4zc0nphsn5)
+[844-672-5646](tel:844-672-5646)
+[7×24 Service Hotline](tel:7×24 Service Hotline)
+[marketing@tuya.com](mailto:marketing@tuya.com)
+[vip@tuya.com](mailto:vip@tuya.com)
+[service@tuya.com](mailto:service@tuya.com)
+[pr@tuya.com](mailto:pr@tuya.com)
+[Contact Us](https://www.tuya.com/contact)
+[TuyaExpo](https://www.tuyaexpo.com)
+[App Mall](https://mall.tuya.com)
+[TuyaGo](https://go.tuya.com/en)
+[Privacy Policy](https://auth.tuya.com/policies/privacy)
+[Terms of Use](https://auth.tuya.com/policies/service)
+[California Privacy Notice](https://auth.tuya.com/policies/CAprivacynotice)
+[Bug Bounty](https://src.tuya.com)
+[Do Not Sell or Share My Information](https://auth.tuya.com/policies/donotsell)

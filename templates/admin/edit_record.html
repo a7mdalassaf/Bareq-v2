@@ -1,0 +1,105 @@
+{% extends "admin/layout.html" %}
+
+{% block title %}{% if is_new %}New{% else %}Edit{% endif %} {{ table_name }} Record - RettLock Admin{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1>{% if is_new %}New{% else %}Edit{% endif %} {{ table_name }} Record</h1>
+        <a href="{{ url_for('admin.view_table', table_name=table_name) }}" class="btn btn-secondary">
+            <i class="bi bi-arrow-left me-1"></i>Back to Table
+        </a>
+    </div>
+    
+    <div class="card">
+        <div class="card-body">
+            <form method="POST" class="needs-validation" novalidate>
+                <div class="row">
+                    {% for column in columns %}
+                    <div class="col-md-6 mb-3">
+                        <label for="{{ column.name }}" class="form-label">
+                            {{ column.name }}
+                            {% if not column.nullable and not column.primary_key %}
+                            <span class="text-danger">*</span>
+                            {% endif %}
+                        </label>
+                        
+                        {% if 'BOOLEAN' in column.type %}
+                        <div class="form-check form-switch">
+                            <input type="checkbox" 
+                                   class="form-check-input" 
+                                   id="{{ column.name }}" 
+                                   name="{{ column.name }}"
+                                   {% if not is_new and column.value %}checked{% endif %}
+                                   {% if column.primary_key %}disabled{% endif %}>
+                        </div>
+                        
+                        {% elif 'DATETIME' in column.type %}
+                        <input type="datetime-local" 
+                               class="form-control" 
+                               id="{{ column.name }}" 
+                               name="{{ column.name }}"
+                               value="{{ column.value if not is_new else '' }}"
+                               {% if column.primary_key %}readonly{% endif %}
+                               {% if not column.nullable and not column.primary_key %}required{% endif %}>
+                        
+                        {% elif 'TEXT' in column.type %}
+                        <textarea class="form-control" 
+                                 id="{{ column.name }}" 
+                                 name="{{ column.name }}"
+                                 rows="3"
+                                 {% if column.primary_key %}readonly{% endif %}
+                                 {% if not column.nullable and not column.primary_key %}required{% endif %}>{{ column.value if not is_new else '' }}</textarea>
+                        
+                        {% else %}
+                        <input type="text" 
+                               class="form-control" 
+                               id="{{ column.name }}" 
+                               name="{{ column.name }}"
+                               value="{{ column.value if not is_new else '' }}"
+                               {% if column.primary_key %}readonly{% endif %}
+                               {% if not column.nullable and not column.primary_key %}required{% endif %}>
+                        {% endif %}
+                        
+                        {% if column.nullable %}
+                        <div class="form-text text-muted">Optional</div>
+                        {% endif %}
+                        
+                        {% if column.primary_key %}
+                        <div class="form-text text-muted">Primary Key</div>
+                        {% endif %}
+                    </div>
+                    {% endfor %}
+                </div>
+                
+                <div class="mt-4">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="bi bi-save me-1"></i>
+                        {% if is_new %}Create{% else %}Save Changes{% endif %}
+                    </button>
+                    <a href="{{ url_for('admin.view_table', table_name=table_name) }}" class="btn btn-secondary">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+// Form validation
+(function () {
+    'use strict'
+    var forms = document.querySelectorAll('.needs-validation')
+    Array.prototype.slice.call(forms).forEach(function (form) {
+        form.addEventListener('submit', function (event) {
+            if (!form.checkValidity()) {
+                event.preventDefault()
+                event.stopPropagation()
+            }
+            form.classList.add('was-validated')
+        }, false)
+    })
+})()
+</script>
+{% endblock %}
